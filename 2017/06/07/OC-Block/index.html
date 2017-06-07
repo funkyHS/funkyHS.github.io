@@ -159,22 +159,320 @@
 
   <section class="post">
     <h2 id="Block的基础用法"><a href="#Block的基础用法" class="headerlink" title="Block的基础用法"></a>Block的基础用法</h2><h3 id="1-block作用"><a href="#1-block作用" class="headerlink" title="1 block作用"></a>1 block作用</h3><p>保存一段代码块</p>
-<h3 id="2-block声明"><a href="#2-block声明" class="headerlink" title="2 block声明"></a>2 block声明</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 返回值(^block变量名)(参数)</div><div class="line">void(^block)()</div><div class="line"></div><div class="line">// block快捷方式 inline</div><div class="line">返回值类型(^变量名)(参数类型) = ^(参数) &#123;</div><div class="line">     &lt;#statements#&gt;</div><div class="line"></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h3 id="3-block定义（三种定义方式）"><a href="#3-block定义（三种定义方式）" class="headerlink" title="3 block定义（三种定义方式）"></a>3 block定义（三种定义方式）</h3><p>####3.1 格式： ^(参数){ }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">void(^block1)() = ^()&#123;   </div><div class="line"></div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>####3.2 如果没有参数，参数可以隐藏，如果有参数，定义的时候必须要写参数，而且要写参数的变量名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">void(^block2)() = ^&#123;</div><div class="line">        </div><div class="line">&#125;;</div><div class="line">void(^block3)(int) = ^(int a)&#123;</div><div class="line">        </div><div class="line"></div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>####3.3 block的返回值可以省略，不管有没有返回值，都可以省略<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int(^block4)() = ^int&#123;</div><div class="line">    return 3;</div><div class="line"></div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<h3 id="4-block类型"><a href="#4-block类型" class="headerlink" title="4 block类型"></a>4 block类型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// block类型：int(^block5)(NSString *)</div><div class="line">int(^block5)(NSString *) = ^(NSString *name)&#123;</div><div class="line">return 8;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h3 id="5-block调用"><a href="#5-block调用" class="headerlink" title="5 block调用"></a>5 block调用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// block类型：int(^block5)(NSString *)</div><div class="line">int(^block5)(NSString *) = ^(NSString *name)&#123;</div><div class="line">return 8;</div><div class="line">&#125;;</div><div class="line">block5(@&quot;Funky&quot;);</div></pre></td></tr></table></figure>
-<hr>
+<h3 id="2-block声明"><a href="#2-block声明" class="headerlink" title="2 block声明"></a>2 block声明</h3><pre><code>// 返回值(^block变量名)(参数)
+void(^block)()
+
+// block快捷方式 inline
+返回值类型(^变量名)(参数类型) = ^(参数) {
+     &lt;#statements#&gt;
+};
+</code></pre><h3 id="3-block定义（三种定义方式）"><a href="#3-block定义（三种定义方式）" class="headerlink" title="3 block定义（三种定义方式）"></a>3 block定义（三种定义方式）</h3><h4 id="3-1-格式：-参数"><a href="#3-1-格式：-参数" class="headerlink" title="3.1 格式： ^(参数){ }"></a>3.1 格式： ^(参数){ }</h4><pre><code>void(^block1)() = ^(){   
+
+};
+</code></pre><h4 id="3-2-如果没有参数，参数可以隐藏，如果有参数，定义的时候必须要写参数，而且要写参数的变量名"><a href="#3-2-如果没有参数，参数可以隐藏，如果有参数，定义的时候必须要写参数，而且要写参数的变量名" class="headerlink" title="3.2 如果没有参数，参数可以隐藏，如果有参数，定义的时候必须要写参数，而且要写参数的变量名"></a>3.2 如果没有参数，参数可以隐藏，如果有参数，定义的时候必须要写参数，而且要写参数的变量名</h4><pre><code>void(^block2)() = ^{
+
+};
+void(^block3)(int) = ^(int a){
+
+
+};
+</code></pre><h4 id="3-3-block的返回值可以省略，不管有没有返回值，都可以省略"><a href="#3-3-block的返回值可以省略，不管有没有返回值，都可以省略" class="headerlink" title="3.3 block的返回值可以省略，不管有没有返回值，都可以省略"></a>3.3 block的返回值可以省略，不管有没有返回值，都可以省略</h4><pre><code>int(^block4)() = ^int{
+    return 3;
+
+};
+</code></pre><h3 id="4-block类型"><a href="#4-block类型" class="headerlink" title="4 block类型"></a>4 block类型</h3><pre><code>// block类型：int(^block5)(NSString *)
+int(^block5)(NSString *) = ^(NSString *name){
+    return 8;
+};
+</code></pre><h3 id="5-block调用"><a href="#5-block调用" class="headerlink" title="5 block调用"></a>5 block调用</h3><pre><code>// block类型：int(^block5)(NSString *)
+int(^block5)(NSString *) = ^(NSString *name){
+    return 8;
+};
+block5(@&quot;Funky&quot;);
+</code></pre><hr>
 <h2 id="Block变量传递"><a href="#Block变量传递" class="headerlink" title="Block变量传递"></a>Block变量传递</h2><ul>
 <li><p>如果是局部变量 block 是值传递</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">int a1 = 3;</div><div class="line"></div><div class="line">void(^block1)() = ^&#123;</div><div class="line"></div><div class="line">NSLog(@&quot;%d&quot;,a1); // 此时仍然输出3</div><div class="line">&#125;;</div><div class="line"></div><div class="line">a1 = 5;</div><div class="line">block1();</div></pre></td></tr></table></figure>
-</li>
+<pre><code>int a1 = 3;
+
+void(^block1)() = ^{
+    NSLog(@&quot;%d&quot;,a1); // 此时仍然输出3
+};
+
+a1 = 5;
+block1();
+</code></pre></li>
+</ul>
+<ul>
 <li><p>如果是静态变量/全局变量/__block修饰的变量，block是指针传递</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">static int a2 = 3;</div><div class="line"></div><div class="line">void(^block2)() = ^&#123;</div><div class="line"></div><div class="line">NSLog(@&quot;%d&quot;,a1); // 此时输出5</div><div class="line">&#125;;</div><div class="line"></div><div class="line">a2 = 5;</div><div class="line"></div><div class="line">block2();</div></pre></td></tr></table></figure>
-</li>
+<pre><code>static int a2 = 3;
+
+void(^block2)() = ^{
+    NSLog(@&quot;%d&quot;,a1); // 此时输出5
+};
+
+a2 = 5;
+
+block2();
+</code></pre></li>
 </ul>
 <hr>
+<h2 id="Block使用场景"><a href="#Block使用场景" class="headerlink" title="Block使用场景"></a>Block使用场景</h2><h3 id="1-block保存代码"><a href="#1-block保存代码" class="headerlink" title="1. block保存代码"></a>1. block保存代码</h3><h4 id="1-1-在一个方法中定义，在另一个方法调用-（使用较少）"><a href="#1-1-在一个方法中定义，在另一个方法调用-（使用较少）" class="headerlink" title="1.1 在一个方法中定义，在另一个方法调用 （使用较少）"></a>1.1 在一个方法中定义，在另一个方法调用 （使用较少）</h4><p>首先我们定义一个block属性<br>方式一：</p>
+<p>#import “ViewController.h”</p>
+<pre><code>// BlockType :类型的别名
+typedef void(^BlockType)();
+
+@interface ViewController ()
+
+@property (nonatomic,strong) BlockType block1;
+
+@end
+</code></pre><p>方式二：</p>
+<pre><code>#import &quot;ViewController.h&quot;
+
+@interface ViewController ()
+
+// block怎么声明就怎么定义属性
+@property (nonatomic,strong) void(^block)();
+
+@end
+</code></pre><p>然后保存代码，在其他方法中使用</p>
+<pre><code>- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    void(^block)() = ^{
+    NSLog(@&quot;调用block&quot;);
+    };
+
+    _block = block;
+
+}
+-(void)touchesBegan:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event {
+    _block();
+}
+</code></pre><h4 id="1-2-在一个类中定义在另外一个类中调用-（常用）"><a href="#1-2-在一个类中定义在另外一个类中调用-（常用）" class="headerlink" title="1.2 在一个类中定义在另外一个类中调用 （常用）"></a>1.2 在一个类中定义在另外一个类中调用 （常用）</h4><p>模仿个人中心的一些使用场景，具体的需求是：在不使用 if else 判断行的情况下，完成点击不同页面的跳转需求！页面我就简单模拟一下,具体写法的优点我就不说了，自己体会吧。。。<br><img src="/images/block/Snip20170604_1.png" alt="??"></p>
+<p>不扯淡，直接上代码。。。</p>
+<p><strong>TableViewController.m文件</strong></p>
+<pre><code>#import &quot;TableViewController.h&quot;
+#import &quot;CellModel.h&quot;
+
+@interface TableViewController ()
+
+@property (nonatomic,strong) NSArray *dataArr;
+
+
+@end
+
+@implementation TableViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    [self setupModel];
+
+}
+
+#pragma mark - 创建模型
+
+-(void)setupModel {
+
+    CellModel *model1 = [CellModel cellModelWithTitle:@&quot;我的收藏&quot;];
+    model1.cellCallBack = ^{
+    NSLog(@&quot;我的收藏&quot;);
+    };
+
+    CellModel *model2 = [CellModel cellModelWithTitle:@&quot;我的回复&quot;];
+    model2.cellCallBack = ^{
+    NSLog(@&quot;我的回复&quot;);
+    };
+
+    CellModel *model3 = [CellModel cellModelWithTitle:@&quot;我的订单&quot;];
+    model3.cellCallBack = ^{
+    NSLog(@&quot;我的订单&quot;);
+
+    };
+
+
+    _dataArr = @[model1,model2,model3];
+}
+
+#pragma mark - Table view data source
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.dataArr.count;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    static NSString *cellId = @&quot;cellId&quot;;
+
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+
+    if (cell == nil) {
+    cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+    }
+
+    CellModel *model = self.dataArr[indexPath.row];
+    cell.textLabel.text = model.title;
+
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    CellModel *model = self.dataArr[indexPath.row];
+    model.cellCallBack ? model.cellCallBack():nil;
+}
+
+
+@end
+</code></pre><p><strong>CellModel.h文件</strong></p>
+<pre><code>@interface CellModel : NSObject
+
+@property (nonatomic,strong) NSString *title;
+// 定义一个block 用来保存代码
+@property (nonatomic,strong) void(^cellCallBack)();
+
++(instancetype)cellModelWithTitle:(NSString *)title;
+
+@end
+</code></pre><p><strong>CellModel.m文件</strong></p>
+<pre><code>@implementation CellModel
+
++(instancetype)cellModelWithTitle:(NSString *)title {
+
+    CellModel *model = [[self alloc]init];
+    model.title = title;
+    return model;
+}
+
+@end
+</code></pre><h3 id="2-block传值"><a href="#2-block传值" class="headerlink" title="2. block传值"></a>2. block传值</h3><ul>
+<li>传值：（只要可以拿到对方就可以传值）</li>
+<li>顺传：给需要传值的对象，直接定义属性就能传值</li>
+<li>逆传：使用代理，block等</li>
+</ul>
+<p>场景： 点击vc1屏幕跳转至vc2  在vc2的textField上输入值，点击屏幕后回传给vc1<br><img src="/images/block/image01.png" alt="&quot;??&quot;"><br>上代码<br><strong>CurrentViewController.m</strong></p>
+<pre><code>-(void)touchesBegan:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event{
+
+    UIStoryboard *board = [UIStoryboard storyboardWithName: @&quot;Main&quot; bundle: nil];
+
+    NextViewController *vc = [board instantiateViewControllerWithIdentifier: @&quot;NextViewController&quot;];
+    vc.view.backgroundColor = [UIColor grayColor];
+    vc.callBack = ^(NSString *inputStr){
+        NSLog(@&quot;我收到了你的输入-----%@&quot;,inputStr);
+    };
+
+    [self presentViewController:vc animated:YES completion:nil];
+
+}
+</code></pre><p><strong>NextViewController.h</strong></p>
+<pre><code>@property (nonatomic,strong) void(^callBack)(NSString *inputStr);
+</code></pre><p><strong>NextViewController.m</strong></p>
+<pre><code>-(void)touchesBegan:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event {
+    // textField 是拖出的控件
+    self.callBack ? self.callBack(self.textField.text) : nil;
+}
+</code></pre><h3 id="3-block当参数使用"><a href="#3-block当参数使用" class="headerlink" title="3. block当参数使用"></a>3. block当参数使用</h3><p>什么时候需要把block当作参数使用：做的事情由外界决定，但是什么时候做由内部决定</p>
+<p><strong>HttpTool.m</strong></p>
+<pre><code>+(void)sendHttpRequestWithToken:(NSString *)token success:(void(^)(NSDictionary *dataDic))success {
+
+    NSDictionary *responseData = @{@&quot;name&quot;:@&quot;Funky&quot;};
+    if (success) {
+        success(responseData);
+    }
+}
+</code></pre><p>其他类中调用</p>
+<pre><code>[HttpTool sendHttpRequestWithToken:@&quot;token&quot; success:^(NSDictionary *dataDic) {
+
+    // 获得响应数据
+    NSLog(@&quot;%@&quot;,dataDic);
+}];
+</code></pre><h3 id="4-block当作返回值使用（链式编程）"><a href="#4-block当作返回值使用（链式编程）" class="headerlink" title="4. block当作返回值使用（链式编程）"></a>4. block当作返回值使用（链式编程）</h3><p>场景：加法计算器<br><strong>CalculatorManager.m</strong></p>
+<pre><code>-(CalculatorManager* (^)(int value))add {
+
+    return ^(int value) {
+        _result += value;
+
+        return self;
+    };
+}
+</code></pre><p><strong>CalculatorManager.h</strong></p>
+<pre><code>@property (nonatomic,assign) int result;
+
+-(CalculatorManager* (^)(int))add;
+</code></pre><p>使用</p>
+<pre><code>CalculatorManager *mgr = [[CalculatorManager alloc]init];
+mgr.add(10).add(10);
+</code></pre><p>具体的加法计算器在<a href="http://www.jianshu.com/p/87ef6720a096" target="_blank" rel="external">这篇文章</a>有具体的实现</p>
+<hr>
+<h2 id="Block内存管理"><a href="#Block内存管理" class="headerlink" title="Block内存管理"></a>Block内存管理</h2><p>block是不是对象？答案：是！官方文档显示如下</p>
+<p>如何判断当前文件是MRC还是ARC？</p>
+<ul>
+<li>dealloc 能否调用super，只有MRC才能调用super</li>
+<li>能否使用retain，release，如果能用就是MRC</li>
+</ul>
+<h3 id="1-MRC环境下"><a href="#1-MRC环境下" class="headerlink" title="1. MRC环境下"></a>1. MRC环境下</h3><p>MRC没有strong，weak，局部变量对象就是相当于基本数据类型<br>MRC给成员属性赋值，一定要使用 set 方法，不能直接访问下划线成员属性赋值</p>
+<pre><code>int a = 3
+void(^block)() = ^{
+NSLog(@&quot;%d&quot;,a)
+};
+NSLog(@&quot;%@&quot;,block);
+</code></pre><p>总结：</p>
+<ul>
+<li>只要block没有引用外部局部变量，block放在内存的全局区</li>
+<li>只要block引用了外部的局部变量，block放在栈里面</li>
+<li>block只能使用copy，不能使用retain，因为使用retain，block还是放在栈里面，出了方法会被释放，如何在其他地方调用，会crash</li>
+</ul>
+<h3 id="2-ARC环境下"><a href="#2-ARC环境下" class="headerlink" title="2. ARC环境下"></a>2. ARC环境下</h3><p>总结：</p>
+<ul>
+<li>只要block没有引用外部局部变量，block放在内存的全局区 (同MRC)</li>
+<li>只要block引用了外部的局部变量，block放在堆里面 ，ARC环境下外部的局部变量默认都是强指针（不同于MRC）</li>
+<li>block使用strong，最好不要使用copy</li>
+</ul>
+<hr>
+<h2 id="Block循环引用"><a href="#Block循环引用" class="headerlink" title="Block循环引用"></a>Block循环引用</h2><p>循环引用：我引用你，你引用我，就会造成循环引用，双方都不会被销毁，导致内存泄漏问题<br><code>block造成循环引用：block会对里面所有强指针变量都强引用一次</code></p>
+<p>假如在 NextViewController.m 文件中，我定义一个block属性</p>
+<pre><code>@property(nonatomic,strong) void(^block)();
+</code></pre><p>使用：</p>
+<pre><code>/*
+分析：
+NextViewController的对象 有个block属性，指向了_block的内存
+block对象 保存了一段代码！所以block对self这个外部对象变量进行了强引用
+self的指针指向NextViewController的对象
+self 对 block 强引用，block 又对 self 进行了强引用----&gt; 造成循环引用
+
+*/
+_block = ^{
+    NSLog(@&quot;%@&quot;,self);   // 此时会造成循环引用
+};
+</code></pre><p>解决：将self变成弱指针变量,这样 block 就不会对 self 强引用</p>
+<pre><code>__weak typeof(self) weakSelf = self;
+_block = ^{
+    NSLog(@&quot;%@&quot;,weakSelf);
+};
+_block();
+</code></pre><p>假如工作中我们需要在 block 里面做耗时的请求操作，如果用 __weak 来修饰，会被释放，可能会出现问题<br>解决：</p>
+<pre><code>__weak typeof(self) weakSelf = self;
+_block = ^{        
+    __strong typeof(weakSelf) strongSelf = weakSelf;
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSLog(@&quot;%@&quot;,strongSelf);
+    });
+
+};
+
+_block();
+</code></pre><p>理解：</p>
+<ul>
+<li>NextViewController对象有一个block属性，指向了 _block对象 —&gt; self 对block 强引用</li>
+<li>_block 内部使用了 weakSelf 弱指针变量 ——&gt; block对self弱引用</li>
+<li>__strong typeof(weakSelf) strongSelf 是一个局部变量指针，它在一个新的栈里面，它是一个强指针，指向NextViewController对象</li>
+<li>dispatch_after 是由系统管理的block，在这个block中 强引用了strongSelf，strongSelf又指向NextViewController对象<br>dispatch_after这个block会在10秒以后，系统会自动销毁</li>
+<li>调用_block,当执行完代码块，strongSelf这个指针会没有了，但是NextViewController对象不会被销毁，因为dispatch_after里面的strongSelf强引用着，当10秒以后dispatch_after block会被销毁，那strongSelf强引用就没有了，此时NextViewController对象就会被销毁，执行dealloc方法</li>
+</ul>
 
   </section>
 
