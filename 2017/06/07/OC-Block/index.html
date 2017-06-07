@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>OC-Block | Funky、</title>
+    <title>OC-Block的使用 | Funky、</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="Welcome to Funky‘s zone. About me,so simple,Keep on coding,Keep on dancing. If you like something,stick to do！">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="OC-Block | Funky、">
+    <meta name="twitter:title" content="OC-Block的使用 | Funky、">
     <meta name="twitter:description" content="Welcome to Funky‘s zone. About me,so simple,Keep on coding,Keep on dancing. If you like something,stick to do！">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="OC-Block | Funky、">
+    <meta property="og:title" content="OC-Block的使用 | Funky、">
     <meta property="og:description" content="Welcome to Funky‘s zone. About me,so simple,Keep on coding,Keep on dancing. If you like something,stick to do！">
 
     
@@ -154,7 +154,7 @@
       </span> 
    
     </div>
-    <h1 class="post-title">OC-Block</h1>
+    <h1 class="post-title">OC-Block的使用</h1>
   </header>
 
   <section class="post">
@@ -174,11 +174,9 @@ void(^block)()
 };
 void(^block3)(int) = ^(int a){
 
-
 };
 </code></pre><h4 id="3-3-block的返回值可以省略，不管有没有返回值，都可以省略"><a href="#3-3-block的返回值可以省略，不管有没有返回值，都可以省略" class="headerlink" title="3.3 block的返回值可以省略，不管有没有返回值，都可以省略"></a>3.3 block的返回值可以省略，不管有没有返回值，都可以省略</h4><pre><code>int(^block4)() = ^int{
     return 3;
-
 };
 </code></pre><h3 id="4-block类型"><a href="#4-block类型" class="headerlink" title="4 block类型"></a>4 block类型</h3><pre><code>// block类型：int(^block5)(NSString *)
 int(^block5)(NSString *) = ^(NSString *name){
@@ -211,7 +209,6 @@ void(^block2)() = ^{
 };
 
 a2 = 5;
-
 block2();
 </code></pre></li>
 </ul>
@@ -242,14 +239,13 @@ typedef void(^BlockType)();
     void(^block)() = ^{
     NSLog(@&quot;调用block&quot;);
     };
-
     _block = block;
 
 }
 -(void)touchesBegan:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event {
     _block();
 }
-</code></pre><h4 id="1-2-在一个类中定义在另外一个类中调用-（常用）"><a href="#1-2-在一个类中定义在另外一个类中调用-（常用）" class="headerlink" title="1.2 在一个类中定义在另外一个类中调用 （常用）"></a>1.2 在一个类中定义在另外一个类中调用 （常用）</h4><p>模仿个人中心的一些使用场景，具体的需求是：在不使用 if else 判断行的情况下，完成点击不同页面的跳转需求！页面我就简单模拟一下,具体写法的优点我就不说了，自己体会吧。。。<br><img src="/images/block/Snip20170604_1.png" alt="??"></p>
+</code></pre><h4 id="1-2-在一个类中定义在另外一个类中调用-（常用）"><a href="#1-2-在一个类中定义在另外一个类中调用-（常用）" class="headerlink" title="1.2 在一个类中定义在另外一个类中调用 （常用）"></a>1.2 在一个类中定义在另外一个类中调用 （常用）</h4><p>模仿个人中心的一些使用场景，具体的需求是：在不使用 if else 判断行的情况下，完成点击不同页面的跳转需求！页面我就简单模拟一下,具体写法的优点我就不说了，自己体会吧。。。<br><img src="http://or6lf2z6x.bkt.clouddn.com/image01.png" alt="案例-w100"></p>
 <p>不扯淡，直接上代码。。。</p>
 <p><strong>TableViewController.m文件</strong></p>
 <pre><code>#import &quot;TableViewController.h&quot;
@@ -259,7 +255,6 @@ typedef void(^BlockType)();
 
 @property (nonatomic,strong) NSArray *dataArr;
 
-
 @end
 
 @implementation TableViewController
@@ -268,7 +263,6 @@ typedef void(^BlockType)();
     [super viewDidLoad];
 
     [self setupModel];
-
 }
 
 #pragma mark - 创建模型
@@ -290,7 +284,6 @@ typedef void(^BlockType)();
     NSLog(@&quot;我的订单&quot;);
 
     };
-
 
     _dataArr = @[model1,model2,model3];
 }
@@ -353,7 +346,7 @@ typedef void(^BlockType)();
 <li>顺传：给需要传值的对象，直接定义属性就能传值</li>
 <li>逆传：使用代理，block等</li>
 </ul>
-<p>场景： 点击vc1屏幕跳转至vc2  在vc2的textField上输入值，点击屏幕后回传给vc1<br><img src="/images/block/image01.png" alt="&quot;??&quot;"><br>上代码<br><strong>CurrentViewController.m</strong></p>
+<p>场景： 点击vc1屏幕跳转至vc2  在vc2的textField上输入值，点击屏幕后回传给vc1<br>上代码<br><strong>CurrentViewController.m</strong></p>
 <pre><code>-(void)touchesBegan:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event{
 
     UIStoryboard *board = [UIStoryboard storyboardWithName: @&quot;Main&quot; bundle: nil];
@@ -407,7 +400,7 @@ typedef void(^BlockType)();
 mgr.add(10).add(10);
 </code></pre><p>具体的加法计算器在<a href="http://www.jianshu.com/p/87ef6720a096" target="_blank" rel="external">这篇文章</a>有具体的实现</p>
 <hr>
-<h2 id="Block内存管理"><a href="#Block内存管理" class="headerlink" title="Block内存管理"></a>Block内存管理</h2><p>block是不是对象？答案：是！官方文档显示如下</p>
+<h2 id="Block内存管理"><a href="#Block内存管理" class="headerlink" title="Block内存管理"></a>Block内存管理</h2><p>block是不是对象？答案：是！官方文档显示如下<br><img src="/images/block/Snip20170604_1.png" alt=""></p>
 <p>如何判断当前文件是MRC还是ARC？</p>
 <ul>
 <li>dealloc 能否调用super，只有MRC才能调用super</li>
@@ -511,7 +504,7 @@ _block();
       var disqus_shortname = 'funkyhs'; 
       
   var disqus_identifier = '/2017/06/07/OC-Block/';
-  var disqus_title = 'OC-Block';
+  var disqus_title = 'OC-Block的使用';
   var disqus_url = 'https://funkyhs.github.io/2017/06/07/OC-Block/';
   
 
