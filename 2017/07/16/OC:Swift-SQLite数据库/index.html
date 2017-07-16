@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>OC/Swift-SQLite数据库 | Funky、</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="Welcome to Funky‘s zone. About me,so simple,Keep on coding,Keep on dancing. If you like something,stick to do！">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="OC/Swift-SQLite数据库 | Funky、">
+    <meta name="twitter:description" content="Welcome to Funky‘s zone. About me,so simple,Keep on coding,Keep on dancing. If you like something,stick to do！">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="OC/Swift-SQLite数据库 | Funky、">
+    <meta property="og:description" content="Welcome to Funky‘s zone. About me,so simple,Keep on coding,Keep on dancing. If you like something,stick to do！">
+
+    
+    <meta name="author" content="Husheng">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Funky、" href="/atom.xml">
+    
+
+    <link rel="canonical" href="https://funkyhs.github.io/2017/07/16/OC:Swift-SQLite数据库/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Funky、 的主页"><img src="/images/avatar.jpg" width="80" alt="Funky、 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Funky、">Funky、</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">Insist, Hard, Success</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">Welcome to Funky‘s zone. About me,so simple,Keep on coding,Keep on dancing. If you like something,stick to do！</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/tags/knowledge">关于技术</a></li>
+            
+              <li class="navigation__item"><a href="/tags/life">关于生活</a></li>
+            
+              <li class="navigation__item"><a href="/aboutme">关于我</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3202571510/" title="我的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/funkyHS" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-07-16T15:10:05.000Z" class="post-list__meta--date date">2017-07-16</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/knowledge/">knowledge</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">OC/Swift-SQLite数据库</h1>
+  </header>
+
+  <section class="post">
+    <p><strong>Demo地址</strong><br><a href="https://github.com/funkyHS/SQLite_OC-Swift_Demo" target="_blank" rel="external">SQLite_OC&amp;Swift_Demo地址</a></p>
+<ul>
+<li>其中 <code>SQLite_Swift_Demo</code>是Swift3.0语言写的SQLite基础</li>
+<li><code>SQLiteTool_OC_Demo</code>是使用OC语言，利用runtime对SQLite进行的封装，面向模型类操作数据库</li>
+</ul>
+<hr>
+<h3 id="1-数据库简介"><a href="#1-数据库简介" class="headerlink" title="1. 数据库简介"></a>1. 数据库简介</h3><p><strong>1.1 什么是数据库</strong></p>
+<ul>
+<li>数据库（Database）是按照数据结构来组织、存储和管理数据的仓库</li>
+<li>数据库可以分为2大种类<ul>
+<li>关系型数据库（主流）:(PC端 : Oracle/MySQL/SQL Server/Access/DB2/Sybase), (嵌入式/移动客户端 : SQLite)</li>
+<li>对象型数据库</li>
+</ul>
+</li>
+</ul>
+<p><strong>1.2 iOS中数据存储的方式</strong></p>
+<ul>
+<li>Plist（NSArray\NSDictionary）: 只能存储系统自带的数据类型, 比如NSDictory, NSArray等等. 自定义的对象无法存储</li>
+<li>Preference（偏好设置\NSUserDefaults）: 本质就是一个plist文件; 也是只能存储系统自带的数据类型, 自定义的对象无法存储</li>
+<li>NSCoding（NSKeyedArchiver\NSkeyedUnarchiver）: 可以存储自己定义的数据类型, 但是都是一次性的全数据操作</li>
+<li>SQLite3 : 存储一些大批量的数据, 排序, 统计等操作</li>
+<li>Core Data : 对SQLite3的一层面向对象的包装, 本质还是要转换成为对应的SQL语句去执行</li>
+<li>钥匙串 : APP之间数据共享/系统级别的加密, 安全性高/当APP 被删除时, 存储的数据依然存在</li>
+</ul>
+<p><strong>1.3 什么是SQLite</strong></p>
+<ul>
+<li>SQLite是一款轻型的嵌入式数据库, 它占用资源非常的低，在嵌入式设备中，可能只需要几百K的内存就够了,它的处理速度比Mysql、PostgreSQL这两款著名的数据库都还快</li>
+</ul>
+<p><strong>1.4 如何存储数据到数据库</strong></p>
+<ul>
+<li>数据库的存储结构和excel很像，以表（table）为单位</li>
+<li>数据库存储数据的步骤 : 新建数据库文件 –&gt; 新建一张表（table）–&gt; 添加多个字段（column，列，属性）–&gt; 添加多行记录（row，每行存放多个字段对应的值）</li>
+</ul>
+<hr>
+<h3 id="2-SQL语言简介"><a href="#2-SQL语言简介" class="headerlink" title="2. SQL语言简介"></a>2. SQL语言简介</h3><p><strong>2.1 什么是SQL?</strong></p>
+<ul>
+<li>SQL（structured query language）：结构化查询语言</li>
+<li>SQL是一种对关系型数据库中的数据进行定义和操作的语言</li>
+<li>SQL语言简洁，语法简单，好学好用</li>
+</ul>
+<p><strong>2.2 什么是SQL语句</strong></p>
+<ul>
+<li>使用SQL语言编写出来的句子\代码，就是SQL语句,  在程序运行过程中，要想操作（增删改查，CRUD）数据库中的数据，必须使用SQL语句,  Create , Retrive, Update, Delete</li>
+</ul>
+<p><strong>2.3 SQL语句的特点</strong></p>
+<ul>
+<li>不区分大小写（比如数据库认为user和UsEr是一样的）</li>
+<li>每条语句都必须以分号 ; 结尾</li>
+</ul>
+<p><strong>2.4 SQL中的常用关键字</strong></p>
+<ul>
+<li>数据库中不可以使用关键字来命名表、字段</li>
+<li>select、insert、update、delete、from、create、where、desc、order、by、group、table、alter、view、index等等</li>
+</ul>
+<p><strong>2.5 SQL语句的种类</strong></p>
+<ul>
+<li>数据定义语句（DDL：Data Definition Language）: 包括create和drop, Alert等操作, 在数据库中创建新表或删除表（create table或 drop table）</li>
+<li>数据操作语句（DML：Data Manipulation Language）: 包括insert、delete、update等操作</li>
+<li>数据查询语句（DQL：Data Query Language）: 可以用于查询获得表中的数据, 关键字select是DQL（也是所有SQL）用得最多的操作, 其他DQL常用的关键字有where，order by，group by和having</li>
+</ul>
+<hr>
+<h3 id="3-DDL语句"><a href="#3-DDL语句" class="headerlink" title="3. DDL语句"></a>3. DDL语句</h3><p><strong>3.1 创表</strong></p>
+<ul>
+<li>格式：create table 表名 (字段名1 字段类型1, 字段名2 字段类型2, …) ;</li>
+<li>示例：create table t_student (id integer, name text, age inetger, score real) ;</li>
+<li>创建表格时, 最好加个表格是否已经存在的判断, 这个防止语句多次执行时发生错误，<code>create table if not exists 表名 (字段名1 字段类型1, 字段名2 字段类型2, …) ;</code></li>
+<li><code>注意：</code>实际上SQLite是无类型的，就算声明为integer类型，还是能存储字符串文本（主键除外），建表时声明啥类型或者不声明类型都可以，也就意味着创表语句可以这么写：<code>create table t_student(name, age);</code> 为了保持良好的编程规范、方便程序员之间的交流，编写建表语句的时候最好加上每个字段的具体类型</li>
+</ul>
+<p><strong>3.2 删表</strong></p>
+<ul>
+<li>格式：drop table if exists 表名 ;</li>
+<li>示例：drop table t_student ;</li>
+</ul>
+<p><strong>3.3 修改表</strong></p>
+<ul>
+<li>修改表名：ALTER TABLE 旧表名 RENAME TO 新表名 </li>
+<li>新增属性：ALTER TABLE 表名 ADD COLUMN 列名 数据类型 限定符</li>
+<li><code>注意:</code> sqlite里面只能实现Alter Table的部分功能，不能删除一列, 修改一个已经存在的列名</li>
+</ul>
+<hr>
+<h3 id="4-约束"><a href="#4-约束" class="headerlink" title="4. 约束"></a>4. 约束</h3><p><strong>4.1 简单约束</strong></p>
+<ul>
+<li>不能为空 not null ：规定字段的值不能为null</li>
+<li>不能重复 unique ：规定字段的值必须唯一</li>
+<li>默认值 default ：指定字段的默认值</li>
+<li>示例：create table t_student (id integer, name text not null unique, age integer not null default 1) ;<br>  表示，name字段不能为null，并且唯一，age字段不能为null，并且默认为1</li>
+</ul>
+<p><strong>4.2 主键约束</strong></p>
+<ul>
+<li><p>什么是主键</p>
+<ul>
+<li>主键（Primary Key，简称PK）用来唯一地标识某一条记录，例如t_student可以增加一个id字段作为主键，相当于人的身份证</li>
+<li>主键可以是一个字段或多个字段</li>
+</ul>
+</li>
+<li><p>添加主键约束的原因</p>
+<ul>
+<li>如果t_student表中就name和age两个字段，而且有些记录的name和age字段的值都一样时，那么就没法区分这些数据，造成数据库的记录不唯一，这样就不方便管理数据</li>
+<li>良好的数据库编程规范应该要保证每条记录的唯一性，为此，增加了主键约束，也就是说，每张表都必须有一个主键，用来标识记录的唯一性</li>
+</ul>
+</li>
+<li><p>主键的设计原则</p>
+<ul>
+<li>主键应当是对用户没有意义的</li>
+<li>永远也不要更新主键</li>
+<li>主键不应包含动态变化的数据</li>
+<li>主键应当由计算机自动生成</li>
+</ul>
+</li>
+<li><p>主键的声明</p>
+<ul>
+<li>在创表的时候用primary key声明一个主键：create table t_student (id integer primary key, name text, age integer) ; integer类型的id作为t_student表的主键</li>
+<li>主键字段：只要声明为primary key，就说明是一个主键字段，主键字段默认就包含了not null 和 unique 两个约束</li>
+<li>如果想要让主键自动增长（必须是integer类型），应该增加autoincrement，例如：create table t_student (id integer primary key autoincrement, name text, age integer) ;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="5-DML语句"><a href="#5-DML语句" class="headerlink" title="5. DML语句"></a>5. DML语句</h3><p><strong>5.1 插入数据（insert）</strong></p>
+<ul>
+<li>格式：insert into 表名 (字段1, 字段2, …) values (字段1的值, 字段2的值, …) ;</li>
+<li>示例：insert into t_student (name, age) values (‘funky’, 18) ;</li>
+<li><code>注意:</code> 数据库中的字符串内容应该用单引号 ’ 括住</li>
+</ul>
+<p><strong>5.2 更新数据（update）</strong></p>
+<ul>
+<li>格式：update 表名 set 字段1 = 字段1的值, 字段2 = 字段2的值, … ; </li>
+<li>示例：update t_student set name = ‘funky’, age = 20 ; </li>
+<li><code>注意:</code> 上面的示例会将t_student表中所有记录的name都改为funky，age都改为20</li>
+</ul>
+<p><strong>5.3 删除数据（delete）</strong></p>
+<ul>
+<li>格式：delete from 表名 ;</li>
+<li>示例：delete from t_student ;</li>
+<li><code>注意:</code> 上面的示例会将t_student表中所有记录都删掉</li>
+</ul>
+<hr>
+<h3 id="6-条件语句"><a href="#6-条件语句" class="headerlink" title="6. 条件语句"></a>6. 条件语句</h3><p><strong>6.1 作用</strong></p>
+<ul>
+<li>如果只想更新或者删除某些固定的记录，那就必须在DML语句后加上一些条件</li>
+</ul>
+<p><strong>6.2 条件语句的常见格式</strong></p>
+<ul>
+<li>where 字段 = 某个值 ;   // 不能用两个 =</li>
+<li>where 字段 is 某个值 ;   // is 相当于 = </li>
+<li>where 字段 != 某个值 ; </li>
+<li>where 字段 is not 某个值 ;   // is not 相当于 != </li>
+<li>where 字段 &gt; 某个值 ; </li>
+<li>where 字段1 = 某个值 and 字段2 &gt; 某个值 ;  // and相当于C语言中的 &amp;&amp;</li>
+<li>where 字段1 = 某个值 or 字段2 = 某个值 ;  //  or 相当于C语言中的 ||</li>
+</ul>
+<p><strong>6.3 示例</strong></p>
+<ul>
+<li>将t_student表中年龄大于10 并且 姓名不等于wex的记录，年龄都改为 5<ul>
+<li>update t_student set age = 5 where age &gt; 10 and name != ‘wex’ ;</li>
+</ul>
+</li>
+<li>删除t_student表中年龄小于等于10 或者 年龄大于30的记录<ul>
+<li>delete from t_student where age &lt;= 10 or age &gt; 30 ;</li>
+</ul>
+</li>
+<li>update t_student set score = age where name = ‘wex’ ;<ul>
+<li>将t_student表中名字等于wex的记录，score字段的值 都改为 age字段的值</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="7-DQL查询语句"><a href="#7-DQL查询语句" class="headerlink" title="7. DQL查询语句"></a>7. DQL查询语句</h3><p><strong>7.1 格式</strong></p>
+<ul>
+<li>select 字段1, 字段2, … from 表名 ;</li>
+<li>select * from 表名;   //  查询所有的字段</li>
+<li>示例：<ul>
+<li>select name, age from t_student ;</li>
+<li>select * from t_student ;</li>
+<li>select * from t_student where age &gt; 10 ;  //  条件查询</li>
+</ul>
+</li>
+</ul>
+<p><strong>7.2 统计</strong></p>
+<ul>
+<li>count(X)：<code>select count(*) from t_student</code>  计算所有记录个数，<code>select count(age) from t_student</code> 计算age有值的记录个数(Null不计算在内)</li>
+<li>avg(X)：计算某个字段的平均值（如果是NULL，就不包含在内）</li>
+<li>sum(X)：计算某个字段的总和</li>
+<li>max(X)：计算某个字段的最大值</li>
+<li>min(X)：计算某个字段的最小值</li>
+</ul>
+<p><strong>7.3 排序</strong></p>
+<ul>
+<li>查询出来的结果可以用order by进行排序<ul>
+<li>select 字段1, 字段2 from 表名 order by 字段 ;</li>
+<li>select * from t_student order by age ;</li>
+</ul>
+</li>
+<li>默认是按照升序排序（由小到大），也可以变为降序（由大到小）<ul>
+<li>select * from t_student order by age desc ;  //降序</li>
+<li>select * from t_student order by age asc ;   // 升序（默认）</li>
+</ul>
+</li>
+<li>也可以用多个字段进行排序<ul>
+<li>select * from t_student order by age asc, height desc ;</li>
+<li>先按照年龄排序（升序），年龄相等就按照身高排序（降序）</li>
+</ul>
+</li>
+</ul>
+<p><strong>7.4 limit分页</strong></p>
+<ul>
+<li>使用limit可以精确地控制查询结果的数量，比如每次只查询10条数据</li>
+<li>格式：select * from 表名 limit 数值1, 数值2 ;</li>
+<li>示例：select * from t_student limit 4, 8 ;（跳过最前面4条语句，然后取8条记录）</li>
+<li>分页<ul>
+<li>limit常用来做分页查询，比如每页固定显示5条数据，那么应该这样取数据，第1页：limit 0, 5   第2页：limit 5, 5  第3页：limit 10, 5   第n页：limit 5*(n-1), 5</li>
+<li>特殊案例：select <em> from t_student limit 7 ;相当于select </em> from t_student limit 0, 7 ;（表示取最前面的7条记录）</li>
+</ul>
+</li>
+</ul>
+<p><strong>7.5 多表查询</strong></p>
+<ul>
+<li>多表查询：select 字段1, 字段2, … from 表名1, 表名2 ;</li>
+<li>别名：select  别名1.字段1 as 字段别名1,  别名2.字段2 as 字段别名2,  from  表名1 as 别名1,   表名2 as 别名2 ;</li>
+<li>可以给表或者字段单独起别名，as 可以省略</li>
+<li>表连接查询：select 字段1, 字段2, … from 表名1, 表名2  where 表名1.id = 表名2.id;</li>
+<li>外键：如果表A的主关键字是表B中的字段,则该字段称为表B的外键，保持数据一致性，完整性，主要目的是控制存储在外键表中的数据。 使两张表形成关联，外键只能引用外表中的列的值或使用空值。</li>
+</ul>
+<hr>
+<h3 id="8-Swift代码实现DDL／DML／DQL"><a href="#8-Swift代码实现DDL／DML／DQL" class="headerlink" title="8. Swift代码实现DDL／DML／DQL"></a>8. Swift代码实现DDL／DML／DQL</h3><p><strong>8.1 DDL语句</strong></p>
+<p><strong>ViewController.swift</strong></p>
+<pre><code>// ----- DDL语句 -----
+
+// 创建表
+SQLiteTool.shareInstance.createTable()
+
+// 删除表
+SQLiteTool.shareInstance.dropTable()
+</code></pre><p><strong>SQLiteTool.swift</strong></p>
+<pre><code>class SQLiteTool: NSObject {
+
+    static let shareInstance = SQLiteTool()
+
+    var db: OpaquePointer? = nil
+
+    override init() {
+        super.init()
+
+        // 1. 创建一个数据库
+        /*
+        sqlite3_open：打开一个指定的数据库, 如果数据库不存在就创建,如果存在就直接打开,并且赋值给参数2
+        参数1: 数据库路径
+        参数2: 一个已经打开的数据库(如果后期要执行sql语句, 都需要借助这个对象)
+        关于sqlite 数据库文件的后缀名, 没有要求, 一般常用 sqlite db db3作后缀名
+        */
+
+        let path = &quot;/Users/Funky/Desktop/sqlite_demo.sqlite&quot;
+
+        if  sqlite3_open(path, &amp;db) == SQLITE_OK {
+
+            print(&quot;执行成功&quot;)
+            createTable()
+
+        }else {
+            print(&quot;执行失败&quot;)
+        }
+
+    }
+
+
+    // 创建表
+    func createTable() -&gt; () {
+        let sql = &quot;create table if not exists t_stu(id integer primary key autoincrement, name text not null, age integer, score real default 60)&quot;
+        let result = execute(sql)
+        if result {
+            print(&quot;创建表成功&quot;)
+        }
+    }
+
+
+    // 删除表
+    func dropTable() -&gt; () {
+        let sql = &quot;drop table if exists t_stu&quot;
+        let result = execute(sql)
+        if result {
+            print(&quot;删除表成功&quot;)
+        }
+    }
+
+
+    func execute(_ sql: String) -&gt; Bool {
+        // 参数1: 已经打开的数据库
+        // 参数2: 需要执行的sql字符串
+        // 参数3: 执行回调
+        // 参数4: 参数3 参数1
+        // 参数5: 错误信息
+        return (sqlite3_exec(db, sql, nil , nil, nil) == SQLITE_OK)
+    }
+
+}
+</code></pre><p><strong>8.2 DML语句</strong></p>
+<p><strong>ViewController.swift</strong></p>
+<pre><code>// ----- DML语句 -----
+
+let stu1 = Student(name: &quot;funky&quot;, age: 18, score: 100)
+
+// 插入数据
+stu1.insertStudent()
+
+// 删除 name 为funky的数据
+Student.deleteStu(name: &quot;funky&quot;)
+
+// 修改数据
+let stu2 = Student(name: &quot;Bob&quot;, age: 28, score: 10)
+stu1.updateStudent(newStu: stu2)
+
+// 绑定插入数据
+stu1.bindInsert()
+
+// 绑定插入大批量数据优化（手动开启‘事物’）
+stu1.fastBindInsert()
+
+
+/*
+
+--&gt; 事务（Transaction）是并发控制的单位，是用户定义的一个操作序列。这些操作要么都做，要么都不做，是一个不可分割的工作单位。通过事务，可以将逻辑相关的一组操作绑定在一起，保持数据的完整性。
+
+--&gt; 事务通常是以BEGIN TRANSACTION开始，以COMMIT TRANSACTION或ROLLBACK TRANSACTION结束。
+COMMIT表示提交，即提交事务的所有操作。具体地说就是将事务中所有对数据库的更新写回到磁盘上的物理数据库中去，事务正常结束。
+ROLLBACK表示回滚，即在事务运行的过程中发生了某种故障，事务不能继续进行，系统将事务中对数据库的所有以完成的操作全部撤消，滚回到事务开始的状态。
+
+*/
+
+SQLiteTool.shareInstance.beginTransaction()
+
+// 张三-10
+let result1 = Student.update(sql: &quot;update t_stu set money = money - 10 where name = &apos;zhangsan&apos;&quot;)
+
+// 李四 + 10
+let result2 = Student.update(sql: &quot;update t_stu set money = money + 10 where name = &apos;lisi&apos;&quot;)
+
+if result1 &amp;&amp; result2 {
+    SQLiteTool.shareInstance.commitTransaction()
+}else {
+    SQLiteTool.shareInstance.rollbackTransaction()
+}
+</code></pre><p>Student.swift</p>
+<pre><code>class Student: NSObject {
+
+    var name: String = &quot;&quot;
+    var age: Int = 0
+    var score: Float = 0.0
+
+    init(name: String, age: Int, score: Float) {
+        super.init()
+        self.name = name
+        self.age = age
+        self.score = score
+    }
+
+    // 1. 插入数据
+    func insertStudent() -&gt; () {
+
+        let sql = &quot;insert into t_stu(name, age, score) values (&apos;\(name)&apos;, \(age), \(score))&quot;
+
+        if  SQLiteTool.shareInstance.execute(sql)  {
+            print(&quot;插入成功&quot;)
+        }
+    }
+
+
+    // 2. 删除 name 为xxx的数据
+    class func deleteStu(name: String) -&gt; () {
+        let sql = &quot;delete from t_stu where name = &apos;\(name)&apos;&quot;
+
+        if  SQLiteTool.shareInstance.execute(sql)  {
+            print(&quot;删除成功&quot;)
+        }
+    }
+
+
+    // 3. 修改数据内容
+    func updateStudent(newStu: Student) -&gt; () {
+
+        let sql = &quot;update t_stu set name = &apos;\(newStu.name)&apos;, age = \(newStu.age), score = \(newStu.score) where name = &apos;\(name)&apos;&quot;
+
+        print(sql)
+
+        if  SQLiteTool.shareInstance.execute(sql)  {
+            print(&quot;修改成功&quot;)
+        }else {
+            print(&quot;修改失败&quot;)
+        }
+
+    }
+
+
+// 4. 绑定插入数据
+func bindInsert() -&gt; () {
+
+    // 根据sql字符串, 创建准备语句
+    // 参数1: 一个已经打开的数据库
+    // 参数2: sql 字符串 &quot;123234324&quot;
+    // 参数3: 取出字符串的长度 &quot;2&quot;  -1 : 代表自动计算
+    // 参数4: 预处理语句
+    // 参数5: 根据参数3的长度, 取出参数2的值以后, 剩余的参数
+    //sqlite3_prepare_v2(db: OpaquePointer!, zSql: UnsafePointer&lt;Int8&gt;!, nByte: Int32, ppStmt: UnsafeMutablePointer&lt;OpaquePointer?&gt;!, pzTail: UnsafeMutablePointer&lt;UnsafePointer&lt;Int8&gt;?&gt;!)
+
+    let sql = &quot;insert into t_stu(name, age, score) values (?, ?, ?)&quot;
+    let db = SQLiteTool.shareInstance.db
+    var stmt: OpaquePointer? = nil
+    if sqlite3_prepare_v2(db, sql, -1, &amp;stmt, nil) != SQLITE_OK {
+        print(&quot;预处理失败&quot;)
+        return
+    }
+
+
+    // 2. 绑定参数
+    // 参数1: 准备语句
+    // 参数2: 绑定值的索引 索引从1
+    // 惨数3: 需要绑定的值
+    sqlite3_bind_int(stmt, 2, 20)
+    sqlite3_bind_double(stmt, 3, 59.9)
+
+    // 绑定文本(姓名)
+    // 参数1: 准备语句
+    // 参数2: 绑定的索引 1
+    // 参数3: 绑定的值 &quot;123&quot;
+    // 参数4: 值取出多少长度 -1 , 取出所有
+    // 参数5: 值的处理方式
+    // SQLITE_STATIC : 人为参数是一个常量, 不会被释放, 处理方案: 不做任何的引用
+    // SQLITE_TRANSIENT: 会对参数, 进行一个引用
+
+    let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
+    sqlite3_bind_text(stmt, 1, &quot;zhangsan2&quot;, -1, SQLITE_TRANSIENT)
+
+    // 3. 执行sql语句, 准备语句
+    if sqlite3_step(stmt) == SQLITE_DONE {
+        print(&quot;执行成功&quot;)
+    }
+
+    // 4. 重置语句
+    sqlite3_reset(stmt)
+
+    // 5. 释放准备语句
+    sqlite3_finalize(stmt)
+
+}
+
+
+// 问题: 如果使用 sqlite3_exec 或者, sqlite3_step()来执行sql语句, 会自动开启一个&quot;事务&quot;, 然后, 自动提交&quot;事务&quot;
+// 方案: 只需要手动开启事务, 手动提交事务, 这时候, 函数内部, 就不会自动开启 和提交事务
+
+
+// 5. 优化绑定插入数据（插入大批量数据）
+func fastBindInsert() -&gt; () {
+
+    let sql = &quot;insert into t_stu(name, age, score) values (?, ?, ?)&quot;
+    let db = SQLiteTool.shareInstance.db
+    var stmt: OpaquePointer? = nil
+    if sqlite3_prepare_v2(db, sql, -1, &amp;stmt, nil) != SQLITE_OK {
+        print(&quot;预处理失败&quot;)
+        return
+    }
+
+    // 手动开启事务
+    SQLiteTool.shareInstance.beginTransaction()
+
+    for i in 0..&lt;100000 {
+
+        let value = Int32(i)
+        sqlite3_bind_int(stmt, 2, value)
+        sqlite3_bind_double(stmt, 3, 59.9)
+
+        let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
+        sqlite3_bind_text(stmt, 1, &quot;zhangsan2&quot;, -1, SQLITE_TRANSIENT)
+
+        if sqlite3_step(stmt) == SQLITE_DONE {
+            // print(&quot;执行成功&quot;)
+        }
+
+        sqlite3_reset(stmt)
+
+    }
+
+    // 提交事务
+    SQLiteTool.shareInstance.commitTransaction()
+
+    sqlite3_finalize(stmt)
+
+
+}
+
+
+class func update(sql: String) -&gt; Bool {
+    return SQLiteTool.shareInstance.execute(sql)
+}
+
+}
+</code></pre><p><strong>SQLiteTool.swift</strong></p>
+<pre><code>class SQLiteTool: NSObject {
+
+    func execute(_ sql: String) -&gt; Bool {
+        return (sqlite3_exec(db, sql, nil , nil, nil) == SQLITE_OK)
+
+    }
+
+
+    // 问题: 如果使用 sqlite3_exec 或者, sqlite3_step()来执行sql语句, 会自动开启一个&quot;事务&quot;, 然后, 自动提交&quot;事务&quot;
+    // 方案: 只需要手动开启事务, 手动提交事务, 这时候, 函数内部, 就不会自动开启 和提交事务
+
+
+    // 开启事务
+    func beginTransaction() -&gt; () {
+        let sql = &quot;begin transaction&quot;
+    if execute(sql) {
+        print(&quot;开启事务成功&quot;)
+        }
+    }
+
+    // 提交事务
+    func commitTransaction() -&gt; () {
+        let sql = &quot;commit transaction&quot;
+        if execute(sql) {
+            print(&quot;提交事务成功&quot;)
+        }
+    }
+
+
+
+    // 事物回滚
+    func rollbackTransaction() -&gt; () {
+        let sql = &quot;rollback transaction&quot;
+        if execute(sql){
+            print(&quot;事物回滚成功&quot;)
+        }
+    }
+
+}
+</code></pre><p><strong>8.3 DQL语句</strong></p>
+<p><strong>ViewController.swift</strong></p>
+<pre><code>// ----- DQL语句 -----
+
+// 查询所有,方案1
+// 作用: 可以通过回调来获取结果, 步骤相对来说简单, 结果数据类型没有特定类型(id),统一是字符串
+Student.queryAll()
+
+// 查询所有,方案2
+// 作用: 可以处理不同特定类型, 步骤相对来说复杂
+Student.queryAllOther()
+</code></pre><p><strong>Student.swift</strong></p>
+<pre><code>// 6. 查询所有，方案1
+class func queryAll() -&gt; () {
+
+    let sql = &quot;select * from t_stu&quot;
+    let db = SQLiteTool.shareInstance.db
+
+    // 参数1: 一个打开的数据库
+    // 参数2: sql语句
+    // 参数3: 回调代码块
+    // 参数1 传递过来的值
+    // 参数2 列的个数
+    // 参数3 值的数组
+    // 参数4: 列名称的数组
+    // 返回值: 0, 继续查询 1: 终止查询
+    // 参数4: 传递到参数3里面的第一个参数
+    // 参数5: 错误信息
+    // char *
+    let result = sqlite3_exec(db, sql, { (
+        firstValue, columnCount, values , columnNames ) -&gt; Int32 in
+
+        let count = Int(columnCount)
+        for i in 0..&lt;count {
+            // 列的名称
+            let columnName = columnNames?[i]
+            let columnNameStr = String(cString: columnName!, encoding: String.Encoding.utf8)
+            // 值
+            let value = values?[i]
+            let valueStr = String(cString: value!, encoding: String.Encoding.utf8)
+
+            print(columnNameStr ?? &quot;&quot;, valueStr ?? &quot;&quot;)
+        }
+        return 0
+
+    }, nil, nil)
+
+    // print(result)
+    if result == SQLITE_ABORT {
+        print(&quot;查询成功&quot;)
+    }else {
+        print(&quot;查询失败&quot;)
+    }
+
+
+}
+
+// 7. 查询所有，方案2
+class func queryAllOther() {
+
+    // 准备语句 历程
+    let sql = &quot;select * from t_stu;&quot;
+    // 1. 创建 &quot;准备语句&quot;
+    // 参数1: 打开的数据库
+    // 参数2: sql字符串
+    // 参数3: 字符串, 取的长度 -1代表, 去所有的
+    // 参数4: 准备语句的指针
+    // 参数5: 剩余的sql字符串
+    let db = SQLiteTool.shareInstance.db
+    var stmt: OpaquePointer? = nil
+    if sqlite3_prepare_v2(db, sql, -1, &amp;stmt, nil) != SQLITE_OK {
+        print(&quot;预处理失败&quot;)
+        return
+    }
+
+    // 2. 绑定参数(这一步可以省略)
+
+    // 3. 执行&quot;准备语句&quot;
+    // sqlite3_step . 作用, 执行DQL, 语句时, 会把, 执行得到的结果, 放到&quot;准备语句&quot;stmt里面
+
+    while sqlite3_step(stmt) == SQLITE_ROW {
+
+        // 读取结果
+        // 从准备语句里面进行读取
+        // 1. 计算预处理语句里面得到的结果是多少列
+        let count = sqlite3_column_count(stmt)
+        for i in 0..&lt;count {
+
+            // 2. 取出列的名称
+            let columnName = sqlite3_column_name(stmt, i)
+            let columnNameStr = String(cString: columnName!, encoding: String.Encoding.utf8)
+
+            print(columnNameStr ?? &quot;&quot;)
+            // 3. 取出列的值
+            // 不同的数字类型, 是通过不同的函数进行获取
+            // 3.1 获取这一列的类型
+            let type = sqlite3_column_type(stmt, i)
+            // 3.2. 根据不同的类型, 使用不同的函数, 获取结果
+            if type == SQLITE_INTEGER {
+                let value = sqlite3_column_int(stmt, i)
+                print(value)
+            }
+            if type == SQLITE_FLOAT {
+                let value = sqlite3_column_double(stmt, i)
+                print(value)
+            }
+            if type == SQLITE_TEXT {
+
+                let valueStr = String(cString: sqlite3_column_text(stmt, i))
+                    print(valueStr)
+                }
+
+            }
+
+
+        }
+
+        // 4. 重置&quot;准备语句&quot;(这一步可以省略)
+
+        // 5. 释放&quot;准备语句&quot;
+        sqlite3_finalize(stmt)
+
+}
+</code></pre><hr>
+<h3 id="9-SQLite函数总结"><a href="#9-SQLite函数总结" class="headerlink" title="9.SQLite函数总结"></a>9.SQLite函数总结</h3><pre><code>1.打开数据库
+int sqlite3_open(
+    const char *filename,   // 数据库的文件路径
+    sqlite3 **ppDb          // 数据库实例
+);
+
+2.执行任何SQL语句
+int sqlite3_exec(
+    sqlite3*,                                  // 一个打开的数据库实例
+    const char *sql,                           // 需要执行的SQL语句
+    int (*callback)(void*,int,char**,char**),  // SQL语句执行完毕后的回调
+    void *,                                    // 回调函数的第1个参数
+    char **errmsg                              // 错误信息
+);
+
+3.检查SQL语句的合法性（查询前的准备）
+int sqlite3_prepare_v2(
+    sqlite3 *db,            // 数据库实例
+    const char *zSql,       // 需要检查的SQL语句
+    int nByte,              // SQL语句的最大字节长度
+    sqlite3_stmt **ppStmt,  // sqlite3_stmt实例，用来获得数据库数据
+    const char **pzTail
+);
+
+4.查询一行数据
+int sqlite3_step(sqlite3_stmt*); // 如果查询到一行数据，就会返回SQLITE_ROW
+
+5.利用stmt获得某一字段的值（字段的下标从0开始）
+double sqlite3_column_double(sqlite3_stmt*, int iCol);  // 浮点数据
+int sqlite3_column_int(sqlite3_stmt*, int iCol); // 整型数据
+sqlite3_int64 sqlite3_column_int64(sqlite3_stmt*, int iCol); // 长整型数据
+const void *sqlite3_column_blob(sqlite3_stmt*, int iCol); // 二进制文本数据
+const unsigned char *sqlite3_column_text(sqlite3_stmt*, int iCol);  // 字符串数据
+</code></pre><hr>
+<h3 id="10-SQLite语句总结"><a href="#10-SQLite语句总结" class="headerlink" title="10.SQLite语句总结"></a>10.SQLite语句总结</h3><pre><code>/*简单约束*/
+CREATE TABLE IF NOT EXISTS t_student(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, age INTEGER);
+CREATE TABLE IF NOT EXISTS t_student(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, age INTEGER NOT NULL);
+CREATE TABLE IF NOT EXISTS t_student(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT UNIQUE, age INTEGER);
+CREATE TABLE IF NOT EXISTS t_student(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, age INTEGER DEFAULT 1);
+
+/*分页*/
+SELECT * FROM t_student ORDER BY id ASC LIMIT 30, 10;
+
+/*排序*/
+SELECT * FROM t_student WHERE score &gt; 50 ORDER BY age DESC;
+SELECT * FROM t_student WHERE score &lt; 50 ORDER BY age ASC , score DESC;
+
+/*计量*/
+SELECT COUNT(*) FROM t_student WHERE age &gt; 50;
+
+/*别名*/
+SELECT name as myName, age as myAge, score as myScore FROM t_student;
+SELECT name myName, age myAge, score myScore FROM t_student;
+SELECT s.name myName, s.age myAge, s.score myScore FROM t_student s WHERE s.age &gt; 50;
+
+/*查询*/
+SELECT name, age, score FROM t_student;
+SELECT * FROM t_student;
+
+/*修改指定数据*/
+UPDATE t_student SET name = &apos;MM&apos; WHERE age = 10;
+UPDATE t_student SET name = &apos;WW&apos; WHERE age is 7;
+UPDATE t_student SET name = &apos;XXOO&apos; WHERE age &lt; 20;
+UPDATE t_student SET name = &apos;NNMM&apos; WHERE age &lt; 50 and score &gt; 10;
+
+/*删除数据*/
+DELETE FROM t_student;
+
+/*更新数据*/
+UPDATE t_student SET name = &apos;ZhangSan&apos;;
+update stu_tmp set name = (select name from stu where stu_tmp.stuNum = stu.stuNum)
+
+/*插入数据*/
+INSERT INTO t_student(age, score, name) VALUES (&apos;28&apos;, 100, &apos;jonathan&apos;);
+INSERT INTO t_student(name, age) VALUES (&apos;zs&apos;, &apos;28&apos;);
+INSERT INTO t_student(score) VALUES (100);
+
+/*插入数据*/
+INSERT INTO t_student(name, age, score) VALUES (&apos;zs&apos;, &apos;28&apos;, 100);
+
+/*添加主键*/
+CREATE TABLE IF NOT EXISTS t_student (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, age INTEGER, score REAL);
+/*添加主键*/
+CREATE TABLE IF NOT EXISTS t_student (id INTEGER, name TEXT, age INTEGER, score REAL, PRIMARY KEY(id));
+
+/*删除表*/
+DROP TABLE IF EXISTS t_student;
+
+/*创建表*/
+CREATE TABLE IF NOT EXISTS t_student(id INTEGER , name TEXT, age , score REAL);
+</code></pre><hr>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/06/18/OC-触摸事件-响应者链条/" title="OC-触摸事件&amp;响应者链条">OC-触摸事件&amp;响应者链条</a></h2>
+                <p class="excerpt">
+                
+                iOS中的事件
+在用户使用app过程中，会产生各种各样的事件，iOS中的事件可以分为3大类型：触摸事件，加速计事件，远程控制事件
+
+响应者对象
+在iOS中不是任何对象都能处理事件，只有继承了UIResponder的对象才能接收并处理事件。我们称之为响应者对象
+UIApplication、UIView
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-06-18T07:55:35.000Z" class="post-list__meta--date date">2017-06-18</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/knowledge/">knowledge</a>
+</span><a class="btn-border-small" href="/2017/06/18/OC-触摸事件-响应者链条/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+<section class="post-comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      var disqus_shortname = 'funkyhs'; 
+      
+  var disqus_identifier = '/2017/07/16/OC:Swift-SQLite数据库/';
+  var disqus_title = 'OC/Swift-SQLite数据库';
+  var disqus_url = 'https://funkyhs.github.io/2017/07/16/OC:Swift-SQLite数据库/';
+  
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          //dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          dsq.src = 'https://a.disquscdn.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2017 - 本站使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题,
+        由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+    
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>
