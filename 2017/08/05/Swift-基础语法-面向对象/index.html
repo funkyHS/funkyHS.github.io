@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>Swift-基础语法&amp;面向对象 | Funky、</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="Welcome to Funky‘s zone. About me,so simple,Keep on coding,Keep on dancing. If you like something,stick to do！">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Swift-基础语法&amp;面向对象 | Funky、">
+    <meta name="twitter:description" content="Welcome to Funky‘s zone. About me,so simple,Keep on coding,Keep on dancing. If you like something,stick to do！">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Swift-基础语法&amp;面向对象 | Funky、">
+    <meta property="og:description" content="Welcome to Funky‘s zone. About me,so simple,Keep on coding,Keep on dancing. If you like something,stick to do！">
+
+    
+    <meta name="author" content="Husheng">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Funky、" href="/atom.xml">
+    
+
+    <link rel="canonical" href="https://funkyhs.github.io/2017/08/05/Swift-基础语法-面向对象/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Funky、 的主页"><img src="/images/avatar.jpg" width="80" alt="Funky、 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Funky、">Funky、</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">Insist, Hard, Success</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">Welcome to Funky‘s zone. About me,so simple,Keep on coding,Keep on dancing. If you like something,stick to do！</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/tags/knowledge">关于技术</a></li>
+            
+              <li class="navigation__item"><a href="/tags/life">关于生活</a></li>
+            
+              <li class="navigation__item"><a href="/aboutme">关于我</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3202571510/" title="我的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/funkyHS" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-08-05T01:20:38.000Z" class="post-list__meta--date date">2017-08-05</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/knowledge/">knowledge</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">Swift-基础语法&amp;面向对象</h1>
+  </header>
+
+  <section class="post">
+    <hr>
+<h2 id="Swift基础语法"><a href="#Swift基础语法" class="headerlink" title="Swift基础语法"></a>Swift基础语法</h2><h3 id="一、特色："><a href="#一、特色：" class="headerlink" title="一、特色："></a>一、特色：</h3><ul>
+<li>取消了预编译指令包括宏</li>
+<li>取消了OC的指针及其他不安全的访问的使用</li>
+<li>全面改为句点表示法</li>
+<li>Swift3.0 去除了NS前缀</li>
+<li>将绝大部分Class转化为struct</li>
+<li>@UIApplication 程序的入口</li>
+<li>只有.swift  没有 .h/.m  在swift中默认全局共享</li>
+<li>所有的代码都包装在{ }中，默认方法都有缩进</li>
+<li>访问当前对象的属性，可以不用 ‘self’</li>
+<li>没有 分号‘ ；’</li>
+<li>// MARK: - 作标记</li>
+<li>// TODO: 作标记</li>
+<li>// FIXME: 作临时标记</li>
+</ul>
+<hr>
+<h3 id="二、基础语法："><a href="#二、基础语法：" class="headerlink" title="二、基础语法："></a>二、基础语法：</h3><h4 id="1-变量和常量"><a href="#1-变量和常量" class="headerlink" title="1. 变量和常量"></a>1. 变量和常量</h4><ul>
+<li>定义变量 var 定义之后可修改，定义常量 let  定义之后不可修改</li>
+<li>自动推导，变量或常量的类型会根据右侧的代码执行结果，推导对应的类型（option + click 查看类型）</li>
+<li>在Swift中对类型要求异常严格,<code>任何不同类型的数据之间，不允许直接运算</code>，不会做默认的隐式转换，所有的类型确定，都要由程序猿负责</li>
+<li><p>Swift中，不存在基本数据类型，都是结构体</p>
+<pre><code>func test() {
+
+    let x = 10
+    let y = 10.5
+    //print(x + y)  这种写法是错误的
+
+    print(x + Int(y)) //将y转换成整数
+    print( Double(x) + y) //将x装换成 Double
+
+    //整数：Int（OC 中 NSInteger 类似）
+    //小数：Double 精度高（OC中的 CGFloat）
+}
+func test1() {
+
+    //如果需要,指定类型 (实际开发中 极少指定类型)
+    let x:Double = 10
+    let y = 10.5
+    print(x + y)
+}
+</code></pre></li>
+</ul>
+<h4 id="2-简单的分支和三目的写法"><a href="#2-简单的分支和三目的写法" class="headerlink" title="2. 简单的分支和三目的写法"></a>2. 简单的分支和三目的写法</h4><pre><code>func test() {
+
+    // 1. 条件不需要 （）
+    // 2. 语句必须有 {}
+    let x = 10
+
+    if x &gt; 5 {
+        print(&quot;大于5&quot;)
+    } else {
+        //永远不会执行 ，编译器编译的时候会做语法检查
+        print(&quot;小于5&quot;)
+    }
+
+    //三目运算
+    x &gt; 10 ? print(&quot;大于10&quot;) : print(&quot;等于于10&quot;)
+    x &gt; 10 ? print(&quot;大于10&quot;) : () //相当于没有else
+}
+</code></pre><h4 id="3-Optional-可选项"><a href="#3-Optional-可选项" class="headerlink" title="3. Optional 可选项"></a>3. Optional 可选项</h4><ul>
+<li><p>强行解包与可选值</p>
+<pre><code>func test() {
+
+    // Optional 是一个枚举 none：没有值 some：某一类值
+    let x : Optional = 10
+
+    // &apos;?&apos; 用来定义 y 是一个可选的Int类型 可能没有值，也可能有一个整数
+    let y: Int? = 20
+
+    // 不同类型之间的值不能直接运算，如果没有值 为nil，不是任何数据类型，不能参与计算
+    // &apos;!&apos; 强行解包 -&gt; 从可选值中强行获取对应的非空值，如果是 nil，就会崩溃
+    print(x! + y!)
+
+}
+</code></pre></li>
+</ul>
+<ul>
+<li><p>变量和常量可选值的默认值</p>
+<ul>
+<li>var 的可选值默认为 nil</li>
+<li>let 的可选值没有默认值</li>
+</ul>
+</li>
+<li><p>对可选值的安全处理</p>
+<pre><code>test(x: 10, y: nil) //调用下面的方法
+
+func test(x: Int?, y: Int?) {
+
+    // 1. 强行解包有风险
+    // print(x! + y!)
+
+    // 2. 使用if判断
+    if x != nil &amp;&amp; y != nil {
+        print(x! + y!)
+    }else{
+        print(&quot;x 或 y 为nil&quot;)
+    }
+
+    // 3. if let 连用，判断值是否为nil ,进入分支后，a，b一定有值，不需要解包
+    // if var 连用 {}内可以对值进行修改
+    if let a = x, let b = y {
+        print(a + b)  // a，b作用域只在 {}中
+    }else{
+        print(&quot;x 或 y 为nil&quot;)
+    }
+
+    // 4. guard let 和 if let刚好相反
+    guard let m = x,let n = y else {
+        print(&quot;x 或 y 为nil&quot;)
+        return
+    }
+    print(m + n)
+
+    // 5. ?? 是一个简单的三目 （如果前面有值，使用值，如果没有值，使用？？后面的值）
+    print((x ?? 0) + (y ?? 0))
+}
+</code></pre></li>
+</ul>
+<h4 id="4-switch的语法"><a href="#4-switch的语法" class="headerlink" title="4. switch的语法"></a>4. switch的语法</h4><ul>
+<li>switch 可以针对任意类型的值进行分支，不在局限在整数</li>
+<li>switch 一般不需要 break</li>
+<li>switch 如果要多值，使用 <code>,</code></li>
+<li><p>所有的分支至少需要一条指令，如果什么都没有，才使用break</p>
+<pre><code>func test(num : String) {
+    switch num {
+        case &quot;10&quot;, &quot;9&quot;:
+        print(&quot;优&quot;)
+
+        case &quot;8&quot;: break
+
+        default:
+        print(&quot;other&quot;)
+    }
+}
+</code></pre></li>
+</ul>
+<h4 id="5-For循环"><a href="#5-For循环" class="headerlink" title="5. For循环"></a>5. For循环</h4><ul>
+<li><p>以前的写法（在swift 3.0 被取消）</p>
+<pre><code>// i++ / ++i 在swift 3.0 被取消 改为 i += 1
+for var i = 0; i &lt; 10; i++ {
+}
+</code></pre></li>
+<li><p>swift3.0写法</p>
+<pre><code>//0..&lt;5 =&gt; [0,5)   0...5 =&gt; [0,5]
+for i in 0..&lt;5 {
+    print(i)
+}
+</code></pre></li>
+<li><p>反序遍历</p>
+<pre><code>for i in (0..&lt;5).reversed() {
+    print(i) //输出 4 3 2 1 0
+}
+</code></pre></li>
+</ul>
+<h4 id="6-字符串"><a href="#6-字符串" class="headerlink" title="6. 字符串"></a>6. 字符串</h4><ul>
+<li><p>字符串的遍历</p>
+<pre><code>let str = &quot;Swift&quot;
+for c in str.characters {
+    print(c)
+}
+</code></pre></li>
+<li><p>字符串的长度</p>
+<pre><code>let str = &quot;Swift基础&quot;
+
+//2.1 返回指定编码的字节数量 UTF8的编码（0-4个），每个汉字3个字节
+print(str.lengthOfBytes(using: .utf8))
+
+//2.2 字符串长度
+print(str.characters.count)
+
+//2.3 使用 NSString 中转
+//as 类型转换
+let ocStr = str as NSString
+print(ocStr.length)
+</code></pre></li>
+<li><p>字符串的拼接</p>
+<pre><code>let name = &quot;Funky&quot;
+let age = 18
+let title: String? = &quot;Swift基础&quot; //注意 可选项Optional
+
+let str = &quot;\(name) \(age) \(title ?? &quot;&quot;)&quot;
+print(str) //=&gt; Funky 18 Swift基础
+</code></pre></li>
+<li><p>字符串的格式化</p>
+<pre><code>let h = 8
+let m = 9
+let s = 6
+
+let date = &quot;\(h):\(m):\(s)&quot;
+print(date) //=&gt; 8:9:6
+
+let date1 = String(format: &quot;%02d:%02d:%02d&quot;, h,m,s)
+print(date1) //=&gt; 08:09:06
+</code></pre></li>
+<li><p>字符串的子串</p>
+<pre><code>//1. Swift取子串的方法一直在优化，一般使用 NSString 作为中转
+let str = &quot;Swift基础&quot;
+let ocStr = str as NSString
+let s1 = ocStr.substring(with: NSMakeRange(2, 3))
+print(s1) //=&gt; ift
+
+//2.String 的 3.0 方法
+print(str.startIndex) //=&gt; _position: 0
+print(str.endIndex) //=&gt; _position: 7
+
+let s2 = str.substring(from: &quot;ab&quot;.endIndex)
+print(s2) //=&gt; ift基础
+
+// 取子字符串的范围
+guard let range = str.range(of: &quot;ift&quot;) else {
+print(&quot;不包含此字符串&quot;)
+    return
+}
+print(range)
+print(str.substring(with: range)) //=&gt;ift
+</code></pre></li>
+</ul>
+<h4 id="7-数组"><a href="#7-数组" class="headerlink" title="7. 数组"></a>7. 数组</h4><ul>
+<li><p>数组的定义</p>
+<pre><code>//可变数组 （var），不可变数组 （let）
+// 自动推导的结果 【String】 -&gt; 表示数组中存放的都是String
+let array = [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;]
+print(array)
+
+//[Int] -&gt; 表示存放的都是 Int，在Swift中基本数据类型不需要包装
+let array1 = [1,2,3]
+print(array1)
+
+//[CGPoint] -&gt; 存放的是CG结构体
+let p = CGPoint(x:10, y:300)
+let array2 = [p]
+print(array2)
+
+//混合数组：[Any] ，开发中几乎不用,CG结构体需要包装
+let array3 = [&quot;Funky&quot;,18,NSValue(cgPoint:p)] as [Any]
+print(array3)
+</code></pre></li>
+<li><p>数组的遍历</p>
+<pre><code>//2.1 按下标遍历
+let array = [&quot;张三&quot;,&quot;李四&quot;,&quot;王五&quot;]
+for i in 0..&lt;array.count {
+    print(i)
+}
+
+//2.2 for in遍历元素
+for s in array {
+    print(s)
+}
+
+//2.3 enum block遍历
+//(offset: Int, element: String) 元组
+for e in array.enumerated() {
+    print(e)
+    print(&quot;\(e.offset) \(e.element)&quot;)
+}
+
+//2.4 n 是索引下标； s 是下标对应的元素 （n/s 可以随便写）
+for (n, s) in array.enumerated() {
+
+    print(&quot;\(n) \(s)&quot;)
+}
+
+//2.5 反序遍历 (先枚举在反序)
+for (n, s) in array.enumerated().reversed() {
+
+    print(&quot;\(n) \(s)&quot;)
+}
+</code></pre></li>
+<li><p>数组的增、删、改</p>
+<pre><code>var array = [&quot;张三&quot;,&quot;李四&quot;,&quot;王五&quot;]
+//追加
+array.append(&quot;Funky&quot;)
+//修改
+array[0] = &quot;老李&quot;
+//删除
+array.remove(at: 3)
+//删除所有，并且保留空间
+array.removeAll(keepingCapacity: true)
+</code></pre></li>
+<li><p>数组的合并</p>
+<pre><code>var array = [&quot;张三&quot;,&quot;李四&quot;,&quot;王五&quot;]
+
+let array1 = [&quot;Funky&quot;]
+//将array1合并到array中(数组类型必须一致)
+array += array1
+print(array)
+</code></pre></li>
+</ul>
+<h4 id="8-字典"><a href="#8-字典" class="headerlink" title="8.字典"></a>8.字典</h4><ul>
+<li><p>定义</p>
+<pre><code>//[String : Any]
+let dict = [&quot;name&quot;:&quot;Funky&quot;,&quot;age&quot;:18] as [String : Any]
+print(dict)
+
+//定义一个字典的数组
+let array:[[String: Any]] = [
+    [&quot;name&quot;:&quot;Funky&quot;,&quot;age&quot;:18],
+    [&quot;name&quot;:&quot;Funky&quot;,&quot;age&quot;:18]
+]
+print(array)
+</code></pre></li>
+</ul>
+<ul>
+<li><p>增删改</p>
+<pre><code>var dict = [&quot;name&quot;:&quot;Funky&quot;,&quot;age&quot;:18] as [String : Any]
+
+//新增
+dict[&quot;height&quot;] = 180
+print(dict)
+
+//修改
+dict[&quot;age&quot;] = 19
+print(dict)
+
+//删除
+dict.removeValue(forKey: &quot;age&quot;)
+print(dict)
+</code></pre></li>
+</ul>
+<ul>
+<li><p>遍历</p>
+<pre><code>let dict1 = [&quot;name&quot;:&quot;Funky&quot;,&quot;age&quot;:18,&quot;height&quot;:180] as [String : Any]
+
+for e in dict1 {
+    print(e)
+    print(&quot;\(e.key) \(e.value)&quot;)
+}
+
+for (key,value) in dict1 {
+    print(&quot;\(key) \(value)&quot;)
+}
+</code></pre></li>
+</ul>
+<ul>
+<li><p>合并</p>
+<pre><code>var dict2 = [&quot;name&quot;:&quot;Funky&quot;,&quot;age&quot;:18,] as [String : Any]
+
+let dict3 = [&quot;height&quot;:180]
+
+for e in dict3 {
+    dict2[e.key] = dict3[e.key]
+}
+
+print(dict2)
+</code></pre></li>
+</ul>
+<hr>
+<h3 id="三、Swift函数："><a href="#三、Swift函数：" class="headerlink" title="三、Swift函数："></a>三、Swift函数：</h3><h4 id="1-函数"><a href="#1-函数" class="headerlink" title="1. 函数"></a>1. 函数</h4><ul>
+<li><p>函数定义</p>
+<pre><code>print(sum(x: 10, y: 50))
+
+//格式： 函数名（形参列表）-&gt; 返回值类型
+func sum(x:Int,y:Int) -&gt; Int {
+    return x + y
+}
+</code></pre></li>
+<li><p>外部参数 (在形参前加一个名字，不影响函数内部的细节)</p>
+<pre><code>print(sum1(num1: 10, num2: 10))
+print(sum2(10, 20))
+
+func sum1(num1 x:Int,num2 y:Int) -&gt; Int {
+    return x + y
+}
+
+//外部调用函数时，会忽略形参的名字 （Swift中 `_` 可以忽略任意不感兴趣的内容）
+func sum2(_ x:Int,_ y:Int) -&gt; Int {
+    return x + y
+}
+</code></pre></li>
+<li><p>默认值</p>
+<pre><code>print(sum3())
+print(sum3(x: 10, y: 50))
+print(sum3(x: 10))
+print(sum3(y: 50))
+
+//通过给参数设置默认值，在调用的时候，可以任意组合参数，如果不指定的，就使用默认值
+func sum3(x:Int = 1,y:Int = 1) -&gt; Int {
+    return x + y
+}
+</code></pre></li>
+<li><p>无返回值 (<code>-&gt;</code> 表示前面执行 后面输出目标结果)</p>
+<pre><code>func test1() {
+    print(&quot;XXX&quot;)
+}
+func test2() -&gt; () {
+    print(&quot;XXX&quot;)
+}
+func test3() -&gt; Void {
+    print(&quot;XXX&quot;)
+}
+</code></pre></li>
+</ul>
+<h4 id="2-闭包"><a href="#2-闭包" class="headerlink" title="2. 闭包"></a>2. 闭包</h4><ul>
+<li><p>最简单的闭包</p>
+<pre><code>/*
+    //闭包的基本格式（in 是用于区分形参返回值和执行代码）
+    {
+        (形参列表) -&gt; (返回值)
+        in
+        需要执行的代码
+    }
+*/ 
+
+//bi: () -&gt; () (没有参数，没有返回值)
+let b1 = {
+    print(&quot;xxx&quot;)
+}
+b1() //执行闭包
+</code></pre></li>
+<li><p>带参数的闭包</p>
+<pre><code>//需要一个关键字 `in` 分隔定义和实现
+//闭包中，参数，返回值，实现代码都是写在 {} 中
+//b2: (Int) -&gt; ()
+let b2 = { (x: Int) -&gt; () in
+    print(x)
+}
+b2(100)
+</code></pre></li>
+<li><p>带参数带返回值的闭包</p>
+<pre><code>//需要一个关键字 `in` 分隔定义和实现
+//闭包中，参数，返回值，实现代码都是写在 {} 中
+//b2: (Int) -&gt; ()
+let b3 = { (x: Int) -&gt; Int in
+    return x + 250
+}
+print(b3(100))
+</code></pre></li>
+<li><p>闭包的几种格式</p>
+<pre><code>//1.将闭包通过实参传递给函数
+//2.如果闭包是函数的最后一个参数，那么闭包可以写在函数（）的后面
+//3.如果函数只接受一个参数，并且这个参数是闭包，那么（）可以省略
+
+loadData { () -&gt; () in
+    print(&quot;被回调了&quot;)
+}
+
+loadData (finished: { () -&gt; () in
+    print(&quot;被回调了&quot;)
+})
+
+loadData(){() -&gt; () in
+
+}
+
+loadData2(num: 10, finished: {() -&gt; () in
+
+})
+
+loadData2(num: 10){() -&gt; () in
+
+}
+
+//如果闭包没有参数也没有返回值，那么in之前的都可以不写，包括in
+loadData {
+}
+
+//参数接受一个没有参数，没有返回值，名称是finished 一个闭包
+func loadData(finished:() -&gt; ()) {
+
+    print(&quot;耗时操作&quot;)
+    finished()
+}
+
+func loadData2(num:Int,finished:() -&gt; ()) {
+
+    print(&quot;耗时操作&quot;)
+    finished()
+}
+</code></pre></li>
+</ul>
+<h4 id="3-循环引用"><a href="#3-循环引用" class="headerlink" title="3.循环引用"></a>3.循环引用</h4><ul>
+<li><p>造成循环引用</p>
+<pre><code>//定义属性
+var completionCallBack: (() -&gt; ())?
+
+//只是闭包对self 进行了copy，闭包执行完成后，会自动销毁，同时释放对self的引用
+loadData {
+    print(self.view)
+}
+
+//循环引用：单方向引用是不会产生循环引用的
+//闭包对self 进行了copy，闭包执行完成后，会自动销毁，同时释放对self的引用
+//同时需要 self 对闭包引用，就会造成循环引用
+
+func loadData(completed:@escaping ()-&gt;()) -&gt; (){
+
+    //使用属性记录闭包 -&gt; self 对闭包引用了
+    completionCallBack = completed
+    completed()
+}
+
+/*
+    deinit 相当于OC的 dealloc ，对象被释放前自动调用   
+    - 没有 func 不允许直接调用；
+    - 没有( ) 不允许带参数，不允许被重载／重写
+    - 使用场景 ：跟踪对象被销毁，NSTimer／CADisplayLink，通知，KVO...
+*/
+deinit {
+    print(&quot;释放&quot;)
+}
+</code></pre></li>
+<li><p>解决循环引用</p>
+<pre><code>//方法一：OC的方式
+//weak 只能修饰 var，不能修饰let
+//weak 可能会在运行时被修改 -&gt; 指向的对象一旦被释放，会被自动设置为nil
+weak var weakSelf = self
+loadData {            
+    // ? 可选解包 - 如果 self 已经被释放，不会向对象发送 getter 的消息，更加安全
+    // ! 强行解包 - 如果 self 已经被释放，强行解包会导致崩溃
+    print(weakSelf?.view) //weakSelf?.view 只是单纯的发送消息，没有计算
+}
+
+//方法二：Swift的方式
+//[weak self] 表示 {}中的所有 self 都是循环引用，需要注意解包
+loadData { [weak self] in
+    print(self?.view)
+}
+
+//方法二：Swift的另外一种方式
+//[unowned self] 表示闭包中的所有 self 都是assign弱引用的，不会强引用，但是如果对象释放，指针地址不会改变
+//如果对象被释放，继续调用，就会出现野指针的问题
+loadData { [unowned self] in
+    print(self.view)
+}
+</code></pre></li>
+</ul>
+<h2 id="—————————————"><a href="#—————————————" class="headerlink" title="—————————————-"></a>—————————————-</h2><h2 id="Swift面向对象"><a href="#Swift面向对象" class="headerlink" title="Swift面向对象"></a>Swift面向对象</h2><h3 id="一、构造函数"><a href="#一、构造函数" class="headerlink" title="一、构造函数"></a>一、构造函数</h3><h4 id="1-构造函数基础"><a href="#1-构造函数基础" class="headerlink" title="1. 构造函数基础"></a>1. 构造函数基础</h4><blockquote>
+<p>构造函数是一种特殊的函数</p>
+<ul>
+<li>主要用来在创建对象时初始化对象</li>
+<li>为对象的成员变量设置初始值</li>
+</ul>
+<p>在OC中的构造函数是 <strong>initWithxxx</strong>,在 Swift 中由于支持函数重载，所有的构造函数都是<strong>init</strong></p>
+<ul>
+<li>重载 overload ：（函数名相同，参数类型和个数不同）</li>
+<li>重写 overrride ： （父类存在相同的方法，子类重新编写父类方法的实现）</li>
+</ul>
+<p>构造函数的作用</p>
+<ul>
+<li>分配空间 alloc</li>
+<li>设置初始值 init</li>
+</ul>
+</blockquote>
+<h4 id="2-必选属性的构造过程"><a href="#2-必选属性的构造过程" class="headerlink" title="2. 必选属性的构造过程"></a>2. 必选属性的构造过程</h4><pre><code>//错误1：Class &apos;Person&apos; has no initializers
+//Person 类没有初始化器，构造函数可以有多个，默认的是 init
+class Person: NSObject {
+    var name:String
+}
+
+
+class Person: NSObject {
+    var name:String
+    //错误2：Overriding declaration requires an &apos;override&apos; keyword
+    //重写（父类有这个方法，子类重新实现），需要 override 关键字
+    init() {
+    }
+}
+
+
+class Person: NSObject {
+    var name:String
+    //错误3：Property &apos;self.name&apos; not initialized at implicitly generated super.init call
+    //implicitly(隐式生成的 super.init()) 调用父类的构造函数之前，属性 self.name 没有被初始化
+    override init() {
+
+    }
+}
+
+
+class Person: NSObject {
+    var name:String
+
+    override init() {
+
+        //错误4：Property &apos;self.name&apos; not initialized at super.init call
+        //在调用父类 super.init() 的时候，没有给 self.name 初始化（分配空间，设置初始值）
+        super.init()
+    }
+}
+
+
+/*
+    必选属性的构造：
+    1.给自己的属性分配空间并且设置初始值
+    2.调用父类的构造函数，是给父类的属性分配空间设置初始值
+    NSObject 没有属性，只有一个成员变量 `isa`（记录是哪个类）
+*/
+class Person: NSObject {
+
+    var name:String
+
+    override init() {
+        name = &quot;funky&quot;
+        super.init()
+    }
+}
+</code></pre><h4 id="3-重写和重载"><a href="#3-重写和重载" class="headerlink" title="3. 重写和重载"></a>3. 重写和重载</h4><pre><code>class Person: NSObject {
+
+    var name:String
+
+    //1.重写 ： 父类有这个方法
+    override init() {
+
+        // name 确实有初始值，但所有的初始值都是 funky -&gt; 引入重载设置初始值
+        name = &quot;funky&quot;
+        super.init()
+    }
+
+    //2.重载 ： 函数名相同，但是参数和个数不同
+    // 重载可以给自己的属性从外部设置初始值
+    // OC 没有重载
+    //注意 ： 如果重载了构造函数，并且没有实现父类 init 方法，系统不再提供 init() 构造函数！
+    init(name: String) {
+        self.name = name
+        super.init()
+    }
+}
+</code></pre><h4 id="4-KVC-函数调用"><a href="#4-KVC-函数调用" class="headerlink" title="4. KVC 函数调用"></a>4. KVC 函数调用</h4><ul>
+<li><p>定义模型属性的时候，如果是对象，通常都是可选的</p>
+<ul>
+<li>在需要的时候创建</li>
+<li>避免写构造函数，可以简化代码</li>
+</ul>
+</li>
+<li><p>如果是基本数据类型，不能设置成可选的，而且要设置初始值，否则 KVC 会崩溃</p>
+<ul>
+<li>原因： Int是一个基本数据类型的结构体，OC中没有，OC 中只有基本数据类型</li>
+</ul>
+</li>
+<li><p>如果需要使用 KVC 设置数值，属性不能是 private 的</p>
+</li>
+<li><p>使用KVC 方法之前，应该调用 super.init() 保证对象已经完全初始化完成</p>
+</li>
+</ul>
+<pre><code>class Person: NSObject {
+
+    var name:String?
+
+    //var age:Int? 不能这样写
+    var age:Int = 0
+
+    //如果是 private（私有的） 属性，使用 KVC 设置值的时候，同样无法设置！
+    //如果设置成 private 属性／方法，禁止外部访问的,使用运行时也获取不到属性（可以获取到ivar），同样会让KVC崩溃
+    //private var title: String?
+    var title: String?
+
+    init(dict:[String:AnyObject]) {
+
+        //保证对象已经完全初始化完成
+        super.init()
+
+        //Use of &apos;self&apos; in method call &apos;setValuesForKeys&apos; before super.init initializes self
+        //使用self的方法 setValuesForKeys 之前，应该调用 super.init
+        //KVC 是OC的方法（在运行时给对象发送消息），要求对象已经实例化完成
+        setValuesForKeys(dict)
+    }
+
+    //重写父类的方法
+    override func setValue(_ value: Any?, forUndefinedKey key: String) {
+        //没有调用 super，将父类的代码实现完全覆盖！不会崩溃
+    }
+}
+</code></pre><h4 id="5-运行时获取对象属性列表"><a href="#5-运行时获取对象属性列表" class="headerlink" title="5. 运行时获取对象属性列表"></a>5. 运行时获取对象属性列表</h4><pre><code>class Person: NSObject {
+
+    var name:String?
+    var age:Int = 0
+    var title: String?
+
+    //使用运行时，获取当前类所有属性的数组
+    // class 相当于 OC 的加号方法
+    class func propertyList() -&gt; [String] {
+
+
+        var count: UInt32 = 0
+
+        //1. 获取 `类` 的属性列表
+        let list = class_copyPropertyList(self, &amp;count)
+
+        //2. 遍历数组
+        for i in 0..&lt;Int(count) {
+
+            /*  
+
+                //3. 根据下标获取属性
+                //objc_property_t?
+                let pty = list?[i]
+
+                //4. 获取属性的名称
+                //UnsafePointer&lt;Int8&gt;? Int8 C语言的字符串
+                let cName = property_getName(pty!)
+
+                //5. 转换成 String 的字符串
+                let name = String(utf8String: cName!)
+
+            */
+
+            //安全守护
+            guard let pty = list?[i],
+                let cName = property_getName(pty),
+                let name = String(utf8String: cName)
+
+            else {
+                    // 继续便利下一个
+                    continue
+                }
+            print(name) //name是一定有值的
+        }
+
+        free(list)
+        return []
+    }
+}
+</code></pre><h4 id="6-便利构造函数"><a href="#6-便利构造函数" class="headerlink" title="6. 便利构造函数"></a>6. 便利构造函数</h4><pre><code>let button = UIButton(title: &lt;#T##String#&gt;, color: &lt;#T##UIColor#&gt;)
+
+
+//extension 类似于 OC 中的 category
+extension UIButton {
+
+    convenience init(title: String, color:UIColor = UIColor.darkGray) {
+        //便利构造函数 与 OC中的抽取分类类似，
+        //注意：便利构造函数 本身不负责对象的创建，使用self.init() 初始化对象
+        self.init()
+        self.setTitle(title, for:.normal)
+        self.setTitleColor(color, for: .normal)
+        self.sizeToFit()
+    }
+}
+</code></pre><h4 id="7-懒加载"><a href="#7-懒加载" class="headerlink" title="7. 懒加载"></a>7. 懒加载</h4><pre><code>//懒加载 - lazy
+// 1. 能够延迟创建
+// 2. 解除解包的烦恼
+// 注意：懒加载的代码只会在第一次调用的时候，执行闭包，然后将闭包的结果保存在 label 的属性中 
+// Swift中一定注意不要主动清理视图或者控件，因为懒加载不会再次创建
+
+lazy var label:UILabel? = UILabel()
+
+override func viewDidLoad() {
+    super.viewDidLoad()
+
+    print(label)
+
+    label?.text = &quot;hello&quot;
+    label?.sizeToFit()    
+    print(label)
+
+    label = nil //释放label
+    print(label)
+}
+</code></pre><h4 id="8-getter-amp-setter方法"><a href="#8-getter-amp-setter方法" class="headerlink" title="8. getter&amp;setter方法"></a>8. getter&amp;setter方法</h4><pre><code>class Person: NSObject {
+
+    private var _name: String?
+    //Swift 中一般不会重写 getter／setter方法
+    var name:String? {
+        get {
+            return _name
+        }
+        set {
+            _name = newValue
+        }
+    }
+}
+</code></pre><h4 id="9-只读属性-readonly"><a href="#9-只读属性-readonly" class="headerlink" title="9. 只读属性 readonly"></a>9. 只读属性 readonly</h4><pre><code>//readonly -&gt; 重写 getter 方法
+var title: String{
+
+    //只重写 getter 方法，就是只读属性
+    get {
+        return &quot;Mr&quot; + (name ?? &quot;&quot;)
+    }
+}
+
+//只读属性的简写（直接 return）
+//又称为 计算型属性（本身不保存内容，都是通过计算获得结果）
+var title2: String {
+    return &quot;Mr XXX&quot; + (name ?? &quot;&quot;)
+}
+</code></pre><h4 id="10-利用模型的didSet-设置-UI-界面"><a href="#10-利用模型的didSet-设置-UI-界面" class="headerlink" title="10. 利用模型的didSet 设置 UI 界面"></a>10. 利用模型的didSet 设置 UI 界面</h4><pre><code>class DemoLabel: UILabel {
+    var person: Person? {
+        //就是替代 OC 中重写 setter 方法
+        //区别：不需要考虑 _成员变量 = 值
+        didSet {
+            //此时 name 属性已经有值，可以直接使用设置UI内容
+            text = person?.name
+        }
+    }
+}
+</code></pre><h4 id="11-可选项"><a href="#11-可选项" class="headerlink" title="11. 可选项"></a>11. 可选项</h4><p><img src="http://or6lf2z6x.bkt.clouddn.com/c5cf6d21-e740-494f-9515-d3ab6b82a5b8.png" alt="可选项"></p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/07/27/OC-导航控制器相关/" title="OC-导航控制器相关">OC-导航控制器相关</a></h2>
+                <p class="excerpt">
+                
+                [TOC]
+1. 整体概念
+
+解释：
+UINavigationController是容器类的视图控制器，是UIViewController的子类，它以栈的形式管理一组视图控制器ViewController，位于栈底的视图是导航控制器的根视图rootViewController
+每一个导航控制器都包含
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-07-27T14:06:32.000Z" class="post-list__meta--date date">2017-07-27</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/knowledge/">knowledge</a>
+</span><a class="btn-border-small" href="/2017/07/27/OC-导航控制器相关/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+<section class="post-comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      var disqus_shortname = 'funkyhs'; 
+      
+  var disqus_identifier = '/2017/08/05/Swift-基础语法-面向对象/';
+  var disqus_title = 'Swift-基础语法&面向对象';
+  var disqus_url = 'https://funkyhs.github.io/2017/08/05/Swift-基础语法-面向对象/';
+  
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          //dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          dsq.src = 'https://a.disquscdn.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2017 - 本站使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题,
+        由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+    
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>
