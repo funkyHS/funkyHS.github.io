@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>OC-《Effective-Objective-C-2-0》读书笔记二 | Funky、</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="Welcome to Funky‘s zone. About me,so simple,Keep on coding,Keep on dancing. If you like something,stick to do！">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="OC-《Effective-Objective-C-2-0》读书笔记二 | Funky、">
+    <meta name="twitter:description" content="Welcome to Funky‘s zone. About me,so simple,Keep on coding,Keep on dancing. If you like something,stick to do！">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="OC-《Effective-Objective-C-2-0》读书笔记二 | Funky、">
+    <meta property="og:description" content="Welcome to Funky‘s zone. About me,so simple,Keep on coding,Keep on dancing. If you like something,stick to do！">
+
+    
+    <meta name="author" content="Husheng">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Funky、" href="/atom.xml">
+    
+
+    <link rel="canonical" href="https://funkyhs.github.io/2017/10/07/OC-《Effective-Objective-C-2-0》读书笔记二/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Funky、 的主页"><img src="/images/avatar.jpg" width="80" alt="Funky、 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Funky、">Funky、</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">Insist, Hard, Success</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">Welcome to Funky‘s zone. About me,so simple,Keep on coding,Keep on dancing. If you like something,stick to do！</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/tags/knowledge">关于技术</a></li>
+            
+              <li class="navigation__item"><a href="/tags/life">关于生活</a></li>
+            
+              <li class="navigation__item"><a href="/aboutme">关于我</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3202571510/" title="我的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/funkyHS" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-10-07T06:30:23.000Z" class="post-list__meta--date date">2017-10-07</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/knowledge/">knowledge</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">OC-《Effective-Objective-C-2-0》读书笔记二</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="内容概要："><a href="#内容概要：" class="headerlink" title="内容概要："></a><strong>内容概要：</strong></h3><p><img src="http://or6lf2z6x.bkt.clouddn.com/OC-%E3%80%8AEffective-Objective-C-2-0%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%BA%8C.png" alt="内容概要image"></p>
+<h2 id="————————————"><a href="#————————————" class="headerlink" title="————————————"></a>————————————</h2><h3 id="三、接口与API设计"><a href="#三、接口与API设计" class="headerlink" title="三、接口与API设计"></a>三、接口与API设计</h3><h4 id="15-用前缀避免命名空间冲突"><a href="#15-用前缀避免命名空间冲突" class="headerlink" title="15. 用前缀避免命名空间冲突"></a><strong>15. 用前缀避免命名空间冲突</strong></h4><ul>
+<li>使用Cocoa创建应用程序时一定要注意，Apple宣称其保留使用所有“两字母前缀”（two-letter prefix）的权利，所以你自己选用的<code>前缀应该是三个字母</code>的。</li>
+<li>不仅是类名，应用程序中的所有名称都应加前缀。如果要为既有类新增“分类”（category），那么<code>一定要给“分类”及“分类”中的方法加上前缀</code>。开发者可能会忽视另外一个容易引发命名冲突的地方，那就死类的实现文件中所用的纯C函数及全局变量，这个问题必须要注意。在编译好的目标文件中，这些名称是要算作“顶级符号”（top-level symbol）的</li>
+<li>选择与你的公司、应用程序或二者皆有关联之名称作为类名的前缀，并在所有代码中均使用这一前缀。</li>
+<li>若自己所开发的程序中用到了第三方库，则应为其中的名称加上前缀</li>
+</ul>
+<hr>
+<h4 id="16-提供“全能初始化方法”"><a href="#16-提供“全能初始化方法”" class="headerlink" title="16. 提供“全能初始化方法”"></a><strong>16. 提供“全能初始化方法”</strong></h4><ul>
+<li>把可为对象提供必要信息以便能完成工作的初始化方法叫做<code>“全能初始化方法”</code>（designated initializer）</li>
+<li>在类中提供一个全能初始化方法，并于文档里指明。其他初始化方法均应调用此方法。</li>
+<li>若全能初始化方法与超类不同，则需覆写超类中的对应方法。</li>
+<li>如果超类的初始化方法不适用于子类，那么应该覆写这个超类方法，并在其中抛出异常。</li>
+</ul>
+<hr>
+<h4 id="17-实现description方法"><a href="#17-实现description方法" class="headerlink" title="17. 实现description方法"></a><strong>17. 实现description方法</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">-(NSString*)description&#123;</div><div class="line">    return [NSString stringWithFormat:@“&lt;%@: %p, %@&gt;”, [self class], self, @&#123;</div><div class="line">        @“title”:_title,</div><div class="line">        @“latitude”:@(_latitude),</div><div class="line">        @“longitude”:@(_longitude)</div><div class="line">    &#125;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出格式为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">location = &lt;EOCLocation: 0x7f98f2e01d20, &#123;</div><div class="line">    latitude = 51.506;</div><div class="line">    longitude = 0;</div><div class="line">    title = London;</div><div class="line">&#125;&gt;</div></pre></td></tr></table></figure></p>
+<p>NSObject协议中还有个方法要注意，那就是<code>debugDescription</code>，此方法的用意与description非常相似。二者的区别在于，debugDescription方法是开发者在调试器中以控制台命令打印对象时才调用的。在NSObject类的默认实现中，此方法只是直接调用了description。如果不想把类名与指针地址这种额外内容放在普通的描述信息里，但是却希望调试的时候能够很方便地看到它们，在这种情况下，就可以重写debugDescription方法</p>
+<ul>
+<li><strong>要点</strong><ul>
+<li>实现description方法返回一个有意义的字符串，用以描述该实例。</li>
+<li>若想在调试时打印出更详尽的对象描述信息，则应实现debugDescription方法</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="18-尽量使用不可变对象"><a href="#18-尽量使用不可变对象" class="headerlink" title="18. 尽量使用不可变对象"></a><strong>18. 尽量使用不可变对象</strong></h4><ul>
+<li>尽量创建不可变的对象。</li>
+<li>若某属性仅可于对象内部修改，则在“class-continuation分类”中将其由readonly属性扩展为readwrite属性。</li>
+<li>不要把可变的collection作为属性公开，而应提供相关方法，以此修改对象中的可变collection。</li>
+</ul>
+<hr>
+<h4 id="19-使用清晰而协调的命名方式"><a href="#19-使用清晰而协调的命名方式" class="headerlink" title="19. 使用清晰而协调的命名方式"></a><strong>19. 使用清晰而协调的命名方式</strong></h4><ul>
+<li>起名时应遵从标准的Objective-C命名规范，这样创建出来的接口更容易为开发者所理解。</li>
+<li>方法名要言简意赅，从左至右读起来要像个日常用语中的句子才好。</li>
+<li>方法名里不要使用缩略后的类型名称。</li>
+<li>给方法起名时的第一要务就是确保其风格与你自己的代码或所要集成的框架相符</li>
+</ul>
+<hr>
+<h4 id="20-为私有方法名加前缀"><a href="#20-为私有方法名加前缀" class="headerlink" title="20. 为私有方法名加前缀"></a><strong>20. 为私有方法名加前缀</strong></h4><ul>
+<li>给私有方法的名称加上前缀，这样可以很容易地将其同公共方法区分开。</li>
+<li>不要单用一个下划线做私有方法的前缀，因为这种做法是预留给苹果公司用的。</li>
+</ul>
+<hr>
+<h4 id="21-理解Objective-C错误模型"><a href="#21-理解Objective-C错误模型" class="headerlink" title="21. 理解Objective-C错误模型"></a><strong>21. 理解Objective-C错误模型</strong></h4><ul>
+<li>只有发生了可使整个应用程序崩溃的严重错误时，才应使用异常。</li>
+<li>在错误不那么严重的情况下，可以指派“委托方法”来处理错误，也可以把错误信息放在NSError对象里，经由“输出参数”返回给调用者。</li>
+</ul>
+<hr>
+<h4 id="22-理解NSCopying协议"><a href="#22-理解NSCopying协议" class="headerlink" title="22. 理解NSCopying协议"></a><strong>22. 理解NSCopying协议</strong></h4><ul>
+<li>若想令自己所写的对象具有拷贝功能，则需实现NSCopying协议。</li>
+<li>如果自定义的对象分为可变版本与不可变版本，那么就要同时实现NSCopying与NSMutableCopying协议。</li>
+<li>复制对象时需决定采用深拷贝还是浅拷贝，一般情况下应该尽量执行浅拷贝。</li>
+<li>如果你所写的对象需要深拷贝，那么可考虑新增一个专门执行深拷贝的方法。</li>
+</ul>
+<h2 id="——————————————————————"><a href="#——————————————————————" class="headerlink" title="——————————————————————"></a>——————————————————————</h2><h3 id="四、协议与分类"><a href="#四、协议与分类" class="headerlink" title="四、协议与分类"></a>四、协议与分类</h3><h4 id="23-通过委托与数据源协议进行对象间通信"><a href="#23-通过委托与数据源协议进行对象间通信" class="headerlink" title="23. 通过委托与数据源协议进行对象间通信"></a><strong>23. 通过委托与数据源协议进行对象间通信</strong></h4><p>Objective-C开发者常使用<code>“委托模式”</code>（Delegate pattern）的编程设计模式来实现<code>对象间的通信</code>，该模式的主旨是：定义一套接口，某对象若想接受另一个对象的委托，则需遵从此接口，以便成为其“委托对象”（delegate）。而这“另一个对象”则可以给其委托对象回传一些信息，也可以在发生相关事件时通知委托对象。在Objective-C中，一般通过<code>“协议”</code>这项语言特性来实现此模式，整个Cocoa系统框架都是这么做的</p>
+<ul>
+<li><p>举个例子，假设要编写一个从网上获取数据的类，我们通常会使用委托模式：获取网络数据的类含有一个“委托对象”，在获取完数据之后，它会回调这个委托对象，具体代码如下</p>
+<pre><code>/***************EOCNetworkFetcher.h********************/
+@protocol EOCNetworkFetcherDelegate &lt;NSObject&gt;
+@optional
+-(void)networkFetcher:(EOCNetworkFetcher *)fetcher didReceiveData:(NSData *)data;
+-(void)networkFetcher:(EOCNetworkFetcher *)fetcher didFailWithError:(NSError *)error;
+@end
+
+// 委托协议中的方法一般都是“可选的”（optional），因为扮演“受委托者”角色的这个对象未必关心其中的所有方法。为了指明可选方法，委托协议经常使用@optional关键字来标注其大部分或全部的方法
+
+@interface EOCNetworkFetcher : NSObject
+@property(nonatomic,weak)id&lt; EOCNetworkFetcherDelegate &gt; delegate;
+@end
+
+// 一定要注意：这个属性需定义成weak，而非strong，因为两者之间必须为“非拥有关系”
+// 通常情况下，扮演delegate的那个对象也要持有本对象。这样做是为了防止造成循环引用
+// 本类中存放的委托对象的这个属性要么定义成weak，要么定义成unsafe_unretained。
+// 如果需要在相关对象销毁时自动清空，则定义成weak；若不需要自动清空，则定义为unsafe_unretained
+</code></pre></li>
+</ul>
+<ul>
+<li>如果要在委托对象上调用可选方法，那么必须提前使用类型信息查询方法判断这个委托对象能否响应相关选择子</li>
+</ul>
+<pre><code>/***************EOCNetworkFetcher.m*********************/
+NSData *data = /* data obtained from network */;
+if([_delegate respondsToSelector: @selector(networkFetcher:didReceiveData:)]){
+    [_delegate networkFetcher:self didReceiveData:data];
+}
+
+// --&gt; 这段代码用“respondsToSelector:”来判断委托对象是否实现了相关方法。如果实现了，就调用，如果没实现，就不执行任何操作
+// 这样的话，delegate对象就可以完全按照其需要来实现委托协议中的方法了，不用担心因为哪个方法没实现而导致程序出问题。
+// 即便没有设置委托对象，程序也能照常运行，因为给nil发送消息将使if语句的值成为false
+
+// --&gt; 在调用delegate对象中的方法时，总是应该把发起委托的实例也一并传入方法中，这样，delegate对象在实现相关方法时，就能根据传入的实例分别执行不同的代码了
+</code></pre><ul>
+<li>实现委托对象的办法是声明某个类遵从委托协议，然后把协议中想实现的那些方法在类里实现出来。某类若要遵从委托协议，可以在其接口中声明，也可以在“calss-continuation分类”中声明。如果要向外界公布此类实现了某协议，那么就在接口中声明，而如果这个协议是个委托协议的话，那么通常只会在类的内部使用。一般都是在“calss-continuation分类”中声明的：</li>
+</ul>
+<pre><code>@interface EOCDataModel ()&lt;EOCNetworkFetcherDelegate&gt;
+
+@end
+
+@implementation EOCDataModel
+
+-(void)networkFetcher:(EOCNetworkFetcher *)fetcher didReceiveData:(NSData *)data
+{ /* Handle data */ }
+
+-(void)networkFetcher:(EOCNetworkFetcher *)fetcher didFailWithError:(NSError *)error
+{ /* Handle error */ }
+
+@end
+</code></pre><p>在实现委托模式与数据源模式时，如果协议中的方法是可选的，那么就会写出一大批类似下面这样的代码来：</p>
+<pre><code>if([_delegate respondsToSelector: @selector(networkFetcher:didReceiveData:)]){
+    [_delegate networkFetcher:self didReceiveData:data];
+}
+</code></pre><p>很容易用代码查出某个委托对象是否能响应特定的选择子，可是如果频繁执行此操作的话，那么除了第一次监测的结果有用之外，后续的监测可能都是多余的。如果委托对象本身没变，那么不太可能会突然响应某个原来不能响应的选择子，也不太会突然无法响应某个原来可以响应的选择子。鉴于此，我们通常<code>把委托对象能否响应某个协议方法这一信息缓存起来，以优化程序效率</code>。假设在“网络数据获取器”那个例子中，delegate对象所遵从的协议里有个表示数据获取进度的回调方法，每当数据获取有进度时，委托对象就会得到通知。这个方法在网络数据获取器的生命周期里会多次调用，如果每次都检查委托对象是否能响应此选择子，那就显得多余了<br>扩充之后的delegate:</p>
+<pre><code>@protocol EOCNetworkFetcherDelegate &lt;NSObject&gt;
+@optional
+-(void)networkFetcher:(EOCNetworkFetcher *)fetcher didReceiveData:(NSData *)data;
+
+-(void)networkFetcher:(EOCNetworkFetcher *)fetcher didFailWithError:(NSError *)error;
+
+-(void)networkFetcher:(EOCNetworkFetcher *)fetcher didUpdateProgressTo:(float)progress;
+@end
+</code></pre><p>将方法响应能力缓存起来的最佳途径是使用<code>“位段”(bitfield)</code>数据类型。这是一项乏人问津的C语言特性，但在此处用起来却正合适。我们可以把结构体摸个字段所占用的二进制位个数设为特定的值。比如像这样：</p>
+<pre><code>struct data{
+    unsigned int fieldA:8;
+    unsigned int fieldB:4;
+    unsigned int fieldC:2;
+    unsigned int fieldD:1;
+};
+</code></pre><p>在结构体中，fieldA位段占用8个二进制位，filedB占用4个，fieldC占用2个，fieldD占用1个。于是，fieldA可以表示0至255之间的值，而filedD则可以表示0或1这两个值。我们可以像fieldD这样，把委托对象是否实现了协议中的相关方法这一信息缓存起来。如果创建的结构体中只有大小为1的位段，那么就能把许多Boolean值塞入一小块数据里面了。以网络数据获取器为例，可以在该实例中嵌入一个含有位段的结构体作为其实例变量，而结构体中的每个位段则表示delegate对象是否实现了协议中的相关方法。此结构体的用法如下：</p>
+<pre><code>@interface EOCNetworkFetcher ()
+{
+    struct{
+        unsigned int didReceiveData:1;
+        unsigned int didFailWithError:1;
+        unsigned int didUpdateProgressTo:1;
+    }_delegateFlags;
+}
+@end
+</code></pre><p>这个结构体用来缓存委托对象是否能响应特定的选择子。实现缓存功能所用的代码可以写在delegate属性所对应的设置方法里：</p>
+<pre><code>-(void)setDelegate:(id&lt;EOCNetworkFetcherDelegate&gt;)delegate
+{
+    _delegate = delegate;
+    _delegateFlags.didReceiveData = [delegate respondsToSelector: @selector(networkFetcher:didReceiveData:)];
+    _delegateFlags.didFailWithError = [delegate respondsToSelector: @selector(networkFetcher:didFailWithError:)];
+    _delegateFlags.didUpdateProgressTo = [delegate respondsToSelector: @selector(networkFetcher:didUpdateProgressTo:)];
+}
+</code></pre><p>这样的话，每次调用delegate的相关方法之前，就不用检测委托对象是否能响应给定的选择子了，而是直接判断查询结构体里的标志：</p>
+<pre><code>if(_delegateFlags.didUpdateProgressTo){
+    [_delegate networkFetcher:self didUpdateProgressTo:currentProgress];
+}
+</code></pre><p>在相关方法要调用很多次时，值得进行这种优化。是否需要优化，则应依照具体代码来定。如果要频繁通过数据源协议从数据源中获得多份相互独立的数据，那么这项优化技术极有可能会提高程序效率</p>
+<ul>
+<li><strong>要点：</strong><ul>
+<li>委托模式为对象提供了一套接口，使其可由此将相关事件告知其他对象。</li>
+<li>将委托对象应该支持的接口定义成协议，在协议中把可能需要处理的事件定义成方法。</li>
+<li>当某对象需要从另外一个对象中获取数据时，可以使用委托模式。这种情况下，该模式亦称“数据源协议”。</li>
+<li>若有必要，可实现含有位段的结构体，将委托对象是否能响应相关协议方法这一信息缓存至其中。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="24-将类的实现代码分散到便于管理的数个分类之中"><a href="#24-将类的实现代码分散到便于管理的数个分类之中" class="headerlink" title="24. 将类的实现代码分散到便于管理的数个分类之中"></a><strong>24. 将类的实现代码分散到便于管理的数个分类之中</strong></h4><ul>
+<li><p>把个人信息建模为类，一般会这样写：</p>
+<pre><code>/****************** Person.h **********************/
+@interface Person : NSObject
+
+@property (nonatomic,copy,readonly) NSString *firstName;
+@property (nonatomic,copy,readonly) NSString *lastName;
+@property (nonatomic,strong,readonly) NSArray *friends;
+
+- (instancetype)initWithFirstName:(NSString *)name lastName:(NSString *)lastName;
+
+/* FriendShip methods */
+- (void)addFriend:(Person *)person;
+- (void)removeFriend:(Person *)person;
+
+/* Work methods */
+- (void)performDaysWork;
+- (void)takeVacationFromWork;
+
+/* Play methods */
+- (void)goToTheCinema;
+- (void)goToSportsGame;
+
+@end
+</code></pre></li>
+<li><p>在实现该类时，所有方法的代码可能会写在一个大文件里，如果还向类中继续添加方法，那么源文件代码就会越来越大，变得难于管理，因此，可以把这样的类分成几个不同的部分，例如，可以用“分类”机制改写如下：</p>
+</li>
+</ul>
+<pre><code>@interface Person : NSObject
+
+@property (nonatomic,copy,readonly) NSString *firstName;
+@property (nonatomic,copy,readonly) NSString *lastName;
+@property (nonatomic,strong,readonly) NSArray *friends;
+
+- (instancetype)initWithFirstName:(NSString *)name lastName:(NSString *)lastName;
+
+@end
+
+@interface Person (FriendShip)
+
+- (void)addFriend:(Person *)person;
+- (void)removeFriend:(Person *)person;
+
+@end
+
+@interface Person (Work)
+
+- (void)performDaysWork;
+- (void)takeVacationFromWork;
+
+@end
+
+@interface Person (Play)
+
+- (void)goToTheCinema;
+- (void)goToSportsGame;
+
+@end
+</code></pre><ul>
+<li>使用分类机制之后，依然可以把整个类都定义在一个接口文件中，并将其代码写在一个实现文件里。可是随着分类的数量增加，当前这份实现文件很快就膨胀的无法管理了，此时，可以把每个分类提取到各自的文件中去，例如，可以拆分成下列几个文件：</li>
+<li>Person + FriendShip（.h / .m）</li>
+<li>Person + Work（.h / .m）</li>
+<li>Person + Play（.h / .m）</li>
+</ul>
+<p>这样做易于管理，方便单独检视，同时分类名称会出现在符号信息中</p>
+<ul>
+<li>在编写分享给其他开发者使用的程序库时，可以考虑创建Private的分类( <code>Person + Private（.h / .m）</code>)。经常会遇到这样的一些方法:他们不是公共API的一部分,然而却非常适合在程序库之内使用。此时应该创建Private分类，如果程序库中某个地方要用到这些方法，就引入这个分类的头文件。而分类的头文件并不随程序库一并公开，于是该库的使用者并不知道这些方法。如果调用者通过其他方式调用，在调试器中看到Private一词，便知道不能直接调用</li>
+</ul>
+<hr>
+<h4 id="25-总是为第三方类的名称加前缀"><a href="#25-总是为第三方类的名称加前缀" class="headerlink" title="25. 总是为第三方类的名称加前缀"></a><strong>25. 总是为第三方类的名称加前缀</strong></h4><p>分类机制通常用于向无源码的既有类中新增功能。这个特性极为强大，但在使用时也很容易忽视其中可能产生的问题。这个问题在于：分类中的方法是直接添加在类里面的，它们就好比这个类中的固有方法。将分类方法加入类中这一操作是在运行期系统加载分类时完成的。运行期系统会把分类中所实现的每个方法都加入类的方法列表中。如果类中本来就有此方法，而分类又实现了一次，那么分类中的方法会覆写原来那一份实现代码。实际上可能会发生很多次覆盖，比如某个分类中的方法覆盖了“主实现”中的相关方法，而另外一个分类中的方法又覆盖了这个分类中的方法。多次覆盖的结果以最后一个分类为准</p>
+<p>比方说，要给NSString添加分类，并在其中提供一些辅助方法，用于处理与HTTP URL有关的字符串。你可能会把分类写成这样：</p>
+<pre><code>@interface NSString (HTTP)
+
+//Encode a string with URL encoding
+-(NSString*)urlEncodedString;
+
+//Decode a URL encoded string
+-(NSString*)urlDecodedString;
+
+@end
+</code></pre><p>现在看起来没什么问题，可是，如果还有一个分类也往NSString里添加方法，那会如何呢？那个分类里可能也有个名叫urlEncodedString的方法，其代码与你所添加的大同小异，但却不能正确实现你所需的功能。那个分类的加载时机如果晚于你所写的这个分类，那么其代码就是把你的那份覆盖掉，这样的话，你在代码中调用urlEncodedString方法时，实际执行的是那个分类里的实现代码。由于其执行结果和你预期的值不同，所以自己所写的那些代码也许就无法正常运行了。这种bug很难追查，因为你可能意识不到实际执行的urlEncodedString代码并不是自己实现的那一份。<br>要解决此问题，一般的做法是：以命名空间来区别各个分类的名称与其中所定义的方法。想在Objective-C中实现命名空间功能，只有一个办法，就是给相关名称都加上某个共用的前缀。与给类名加前缀时所应考虑的因素类似，给分类所加的前缀也要选得恰当才行。一般来说，这个前缀应该与应用程序或程序库中其他地方所用的前缀相同。<br>比如：</p>
+<pre><code>@interface NSString (ABC_HTTP)
+
+//Encode a string with URL encoding
+-(NSString*)abc_urlEncodedString;
+
+//Decode a URL encoded string
+-(NSString*)abc_urlDecodedString;
+
+@end
+</code></pre><ul>
+<li><strong> 要点：</strong><ul>
+<li>向第三方类中添加分类时，总应给其名称加上你专用的前缀。</li>
+<li>向第三方类中添加分类时，总应给其中的方法名加上你专用的前缀。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="26-勿在分类中声明属性"><a href="#26-勿在分类中声明属性" class="headerlink" title="26. 勿在分类中声明属性"></a><strong>26. 勿在分类中声明属性</strong></h4><ul>
+<li>属性是封装数据的方式。从技术上说，分类里也可以声明属性，但这种做法要尽量避免。原因在于，除了“class-continuation分类”之外，其他分类都无法向类中新增实例变量，因此，它们无法把实现属性所需的实例变量合成出来</li>
+<li><p><code>关联对象</code>能够解决在分类中不能合成实例变量的问题。可以在分类中用下面这段代码实现存取方法：</p>
+<pre><code>#import &lt;objc/runtime.h&gt;
+
+static const char *kFriendsPropertyKey = &quot;kFriendsPropertyKey&quot;;
+
+@implementation EOCPerson(Friendship)
+
+-(NSArray *)firends{
+    return objc_getAssociatedObject(self, kFriendsPropertyKey);
+}
+-(void)setFirends:(NSArray *)firends{
+    objc_setAssociatedObject(self, kFriendsPropertyKey, firends, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+@end
+</code></pre></li>
+</ul>
+<ul>
+<li>这样做可行，但不太理想。要把<code>相似的代码写很多遍</code>，而且在<code>内存管理问题上容易出错</code>，因为我们在为属性实现存取方法时，经常会忘记遵从其内存管理语义。比方说，你可能通过属性特质修改了某个属性的内存管理语义。而此时还要记得，在设置方法中也得修改设置关联对象时所用的内存管理语义才行</li>
+<li><p>此外，你可能会选用可变数组来实现friends属性所对应的实例变量。若是这么做，就得在设置方法中将传入的数组参数拷贝为可变版本，而这又成为另外一个编码时容易出错的地方。因此，把属性定义在“主接口”（main interface）中要比定义在分类里清晰的多</p>
+</li>
+<li><p><code>分类机制</code>，应将其理解为一种手段，目标在于<code>扩展类的功能，而非封装数据</code></p>
+</li>
+</ul>
+<ul>
+<li><strong> 要点：</strong><ul>
+<li>把封装数据所用的全部属性都<code>定义在主接口里</code>。</li>
+<li>在“class-continuation分类”之外的其他分类中，<code>可以定义存取方法，但尽量不要定义属性</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="27-使用“class-continuation分类”隐藏实现细节"><a href="#27-使用“class-continuation分类”隐藏实现细节" class="headerlink" title="27. 使用“class-continuation分类”隐藏实现细节"></a><strong>27. 使用“class-continuation分类”隐藏实现细节</strong></h4><ul>
+<li>通过“class-continuation分类”向类中新增实例变量</li>
+<li>如果某属性在主接口中声明为“只读”，而类的内部又要用设置方法修改此属性，那么就在“class-continuation分类”中将其扩展为“可读写”</li>
+<li>把私有方法的原型声明在“class-continuation分类”里面</li>
+<li>若想使类所遵循的协议不为人所知，则可于“class-continuation分类”中声明</li>
+</ul>
+<hr>
+<h4 id="28-通过协议提供匿名对象"><a href="#28-通过协议提供匿名对象" class="headerlink" title="28. 通过协议提供匿名对象"></a><strong>28. 通过协议提供匿名对象</strong></h4><p>协议定义了一系列方法，遵从此协议的对象应该实现它们（如果这些方法不是可选的，那么就必须实现）。于是，我们可以用协议把自己所写的API之中的实现细节隐藏起来，<code>将返回的对象设计为遵从此协议的纯id类型</code>。这样的话，想要隐藏的类名就不会出现在API之中了。若是接口背后有多个不同的实现类，而你又不想指明具体使用哪个类，那么可以考虑用这个办法，因为有时候这些类可能会变，有时候它们又无法容纳于标准的类继承体系中，因而不能以某个公共基类来统一表示。<br>此概念经常称为<code>“匿名对象（anonymous object）”</code>，这与其他语言中的“匿名对象”不同，在那些语言中，该词是指以内联形式所创建出来的无名类，而此词在Objective-C中则不是这个意思。例如，在定义“受委托者”（delegate）这个属性时，可以这样写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic,weak)id&lt;EOCDelegate&gt; delegate;</div></pre></td></tr></table></figure></p>
+<p>由于该属性的类型是id<eocdelegate>，所以实际上<code>任何类型的对象都能充当这一属性</code>，即便该类不继承自NSObject也可以，<code>只要遵从EOCDelegate协议</code>就行，对于具备此属性的类来说，delegate就是“匿名的”。如有需要，可在运行期查出此对象所属的类型。然而这样做不太好，因为指定属性类型时所写的那个EOCDelegate契约已经表明此对象的具体类型无关紧要了。</eocdelegate></p>
+<p>NSDictionary也能实际说明这一概念。在字典中，键的标准内存管理语义是<code>“设置时拷贝”</code>，而值的语义则是<code>“设置时保留”</code>。因此，在可变版本的字典中，设置键值对所用的方法的签名是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)setObject:(id)anObject forKey:(id &lt;NSCopying&gt;)aKey</div></pre></td></tr></table></figure></p>
+<p>表示键的那个参数其类型为id <nscopying>，作为参数值的对象，它可以是任何类型，只要遵从NSCopying协议就好，这样的话，就能向该对象发送拷贝消息了。这个key参数可以视为匿名对象。与delegate属性一样，字典也不关心key对象所属的具体类，而且它也决不应该依赖于此。字典的对象只要能确定它可以给此实例发送拷贝消息就行了</nscopying></p>
+<ul>
+<li><strong>要点：</strong><ul>
+<li>协议可在某种程度上提供匿名类型。具体的对象类型可以淡化成遵从某协议的id类型，协议里规定了对象所应实现的方法</li>
+<li>使用匿名对象来隐藏类型名称（或类名）</li>
+<li>如果具体类型不重要，重要的是对象能够响应（定义在协议里的）特定方法，那么可使用匿名对象来表示</li>
+</ul>
+</li>
+</ul>
+<h2 id="———————————————————————"><a href="#———————————————————————" class="headerlink" title="———————————————————————"></a>———————————————————————</h2>
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/09/30/《Effective-Objective-C-2-0》读书笔记一/" title="OC-《Effective Objective-C 2.0》读书笔记一">OC-《Effective Objective-C 2.0》读书笔记一</a></h2>
+                <p class="excerpt">
+                
+                内容概要：
+————————————一、熟悉Objective-C1. 了解Objective-C的起源
+Objective-C为C语言添加了面向对象的特性，是其超集，C语言的所有功能在编写Objective-C代码时依然适用
+Objective-C是由Smalltalk（20世纪70年代出现的一种
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-09-30T02:09:17.000Z" class="post-list__meta--date date">2017-09-30</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/knowledge/">knowledge</a>
+</span><a class="btn-border-small" href="/2017/09/30/《Effective-Objective-C-2-0》读书笔记一/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+<section class="post-comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      var disqus_shortname = 'funkyhs'; 
+      
+  var disqus_identifier = '/2017/10/07/OC-《Effective-Objective-C-2-0》读书笔记二/';
+  var disqus_title = 'OC-《Effective-Objective-C-2-0》读书笔记二';
+  var disqus_url = 'https://funkyhs.github.io/2017/10/07/OC-《Effective-Objective-C-2-0》读书笔记二/';
+  
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          //dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          dsq.src = 'https://a.disquscdn.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2017 - 本站使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题,
+        由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+    
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>
