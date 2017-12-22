@@ -238,7 +238,7 @@ NSDictionary *dic = @{@&quot;name&quot; : @&quot;funky&quot;,
 <li>最好使用 <code>NSENUM 和 NSOPTIONS</code> 宏来定义枚举类型，并指明其底层数据类型。这样做可以确保枚举是用开发者所选的底层数据类型实现出来的，而不会采用编译器所选的类型</li>
 <li>在处理枚举类型的<code>switch语句中不要实现default分支</code>，这样有新加入的枚举的话，编译器就会提示开发者：switch 语句并未处理所有枚举</li>
 <li><p>如果用枚举来表示选项，且多个选项又可同时使用，那么就将各选项值定义为2的幂，以便<code>通过按位或操作将其组合起来</code>，以<code>按位或操作来组合的枚举都使用 NS_OPTIONS 定义</code>， 而<code>不需要组合使用的枚举，则使用 NS_ENUM 来定义</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">typedef NS_OPTIONS(NSUInteger, UIViewAutoresizing) &#123;</div><div class="line">    UIViewAutoresizingNone = 0,</div><div class="line">    UIViewAutoresizingFlexibleLeftMargin = 1 &lt;&lt; 0,</div><div class="line">    UIViewAutoresizingFlexibleWidth = 1 &lt;&lt; 1,</div><div class="line">    UIViewAutoresizingFlexibleRightMargin = 1 &lt;&lt; 2,</div><div class="line">    UIViewAutoresizingFlexibleTopMargin = 1 &lt;&lt; 3,</div><div class="line">    UIViewAutoresizingFlexibleHeight = 1 &lt;&lt; 4,</div><div class="line">    UIViewAutoresizingFlexibleBottomMargin = 1 &lt;&lt; 5</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">typedef NS_OPTIONS(NSUInteger, UIViewAutoresizing) &#123;</span><br><span class="line">    UIViewAutoresizingNone = 0,</span><br><span class="line">    UIViewAutoresizingFlexibleLeftMargin = 1 &lt;&lt; 0,</span><br><span class="line">    UIViewAutoresizingFlexibleWidth = 1 &lt;&lt; 1,</span><br><span class="line">    UIViewAutoresizingFlexibleRightMargin = 1 &lt;&lt; 2,</span><br><span class="line">    UIViewAutoresizingFlexibleTopMargin = 1 &lt;&lt; 3,</span><br><span class="line">    UIViewAutoresizingFlexibleHeight = 1 &lt;&lt; 4,</span><br><span class="line">    UIViewAutoresizingFlexibleBottomMargin = 1 &lt;&lt; 5</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>注：‘&lt;&lt;’为左移操作符，‘1 &lt;&lt; 2’表示1左移2位，即为二进制100</p>
 </li>
@@ -251,7 +251,7 @@ NSDictionary *dic = @{@&quot;name&quot; : @&quot;funky&quot;,
 <h4 id="6-理解“属性”"><a href="#6-理解“属性”" class="headerlink" title="6. 理解“属性”"></a><strong>6. 理解“属性”</strong></h4><ul>
 <li><code>“属性”（property）</code>是用来<code>封装对象中的数据</code></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@inteface person:NSObject &#123;</div><div class="line">@public</div><div class="line">    NSString *_firstName;</div><div class="line">    NSString *_lastName;</div><div class="line">@private</div><div class="line">    NSString *_someInternalData;</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@inteface person:NSObject &#123;</span><br><span class="line">@public</span><br><span class="line">    NSString *_firstName;</span><br><span class="line">    NSString *_lastName;</span><br><span class="line">@private</span><br><span class="line">    NSString *_someInternalData;</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
 <ul>
 <li>这种写法的<strong>问题</strong>是：<ul>
 <li>对象布局在<code>编译期（compile time）</code>就已经固定了。只要碰到访问_firstName变量的代码，编译器就把其替换为<code>“偏移量”（offset）</code>，这个偏移量是<code>“硬编码”（hardcode）</code>，表示<code>该变量距离存放对象的内存区域的起始地址有多远</code>。如果又加了一个实例变量，在firstName前加一个变量dateOfBirth，那么原来指向_firstName的地址偏移量就指向了_dateOfBirth了，就会读取到错误的值。所以，如果代码使用了编译期计算出来的偏移量，那么在<code>修改类定义之后必须重新编译</code>，否则就会出错。例如：某个代码库中的代码使用了一份旧的类定义。如果和其相链接的代码使用了新的类定义，那么运行时就会出现不兼容现象。</li>
@@ -294,7 +294,7 @@ NSDictionary *dic = @{@&quot;name&quot; : @&quot;funky&quot;,
 <li><p><strong>（4）方法名：</strong></p>
 <ul>
 <li><p>getter=<name> 指定”获取方法”的方法名，如果某个属性是Boolean型,而你想为其获取方法加上”is”，那就可以用这个方法来指定</name></p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic, getter = isOn) BOOL on;</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property (nonatomic, getter = isOn) BOOL on;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>setter=<name> 指定”设置方法”的方法名.这种做法几乎用不到</name></p>
 </li>
@@ -315,10 +315,10 @@ NSDictionary *dic = @{@&quot;name&quot; : @&quot;funky&quot;,
 <hr>
 <h4 id="7-在对象内部尽量直接访问实例变量"><a href="#7-在对象内部尽量直接访问实例变量" class="headerlink" title="7. 在对象内部尽量直接访问实例变量"></a><strong>7. 在对象内部尽量直接访问实例变量</strong></h4><ul>
 <li><p><strong>通过属性：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- (NSString *)fullName &#123;</div><div class="line">    return [NSString stringWithFormat:@“%@ %@“,self.firstName,self.lastName];</div><div class="line">&#125;</div><div class="line">- (void)setFullName:(NSString *)fullName &#123;</div><div class="line">    NSArray *components = [fullName componentsSeparatedByString:@“ “];</div><div class="line">    self.firstName = components[0];</div><div class="line">    self.lastName = components[1];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- (NSString *)fullName &#123;</span><br><span class="line">    return [NSString stringWithFormat:@“%@ %@“,self.firstName,self.lastName];</span><br><span class="line">&#125;</span><br><span class="line">- (void)setFullName:(NSString *)fullName &#123;</span><br><span class="line">    NSArray *components = [fullName componentsSeparatedByString:@“ “];</span><br><span class="line">    self.firstName = components[0];</span><br><span class="line">    self.lastName = components[1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>直接访问实例变量：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">- (NSString *)fullName &#123;</div><div class="line">    return [NSString stringWithFormat:@“%@ %@“,_firstName,_lastName];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)setFullName:(NSString *)fullName &#123;</div><div class="line">    NSArray *components = [fullName componentsSeparatedByString:@“ “];</div><div class="line">    _firstName = components[0];</div><div class="line">    _lastName = components[1];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (NSString *)fullName &#123;</span><br><span class="line">    return [NSString stringWithFormat:@“%@ %@“,_firstName,_lastName];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)setFullName:(NSString *)fullName &#123;</span><br><span class="line">    NSArray *components = [fullName componentsSeparatedByString:@“ “];</span><br><span class="line">    _firstName = components[0];</span><br><span class="line">    _lastName = components[1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>直接使用实例变量和使用设置方法的区别</strong></p>
 <ul>
@@ -345,14 +345,14 @@ NSDictionary *dic = @{@&quot;name&quot; : @&quot;funky&quot;,
 <li><p>编写hash方法时，应该使用计算速度快而且哈希碰撞几率低的算法。</p>
 </li>
 <li><p>直接取属性的hash比使用字符串拼接效率高，类似下面代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (NSUInteger)hash &#123;</div><div class="line">    NSUInteger firstNameHash = [_firstName hash];</div><div class="line">    NSUInteger lastNameHash = [_lastName hash];</div><div class="line">    NSUInteger ageHash = _age;</div><div class="line">    return firstNameHash ^ lastNameHash ^ ageHash;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (NSUInteger)hash &#123;</span><br><span class="line">    NSUInteger firstNameHash = [_firstName hash];</span><br><span class="line">    NSUInteger lastNameHash = [_lastName hash];</span><br><span class="line">    NSUInteger ageHash = _age;</span><br><span class="line">    return firstNameHash ^ lastNameHash ^ ageHash;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <hr>
 <h4 id="9-以“类簇模式”隐藏实现细节"><a href="#9-以“类簇模式”隐藏实现细节" class="headerlink" title="9. 以“类簇模式”隐藏实现细节"></a><strong>9. 以“类簇模式”隐藏实现细节</strong></h4><ul>
 <li>“类簇”（class cluster）是一种很有用的模式，可以<code>隐藏“抽象基类”背后实现细节</code>。</li>
 </ul>
-<p>比如UIButton类的类方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+(UIButton*)buttonWithType:(UIButtonType)type;</div></pre></td></tr></table></figure></p>
+<p>比如UIButton类的类方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+(UIButton*)buttonWithType:(UIButtonType)type;</span><br></pre></td></tr></table></figure></p>
 <p>该方法返回的对象，其类型取决于传入的按钮类型。UIButton类的使用者无须关心创建出来的按钮具体属于哪个子类，也不用考虑按钮的绘制方式等实现细节。</p>
 <ul>
 <li><code>“工厂模式（Factory pattern）”</code>是创建类簇的方法之一</li>
@@ -505,10 +505,10 @@ void doTheThing(int type){
 <pre><code>id returnValue = [someObject messageName:parameter];
 </code></pre><ul>
 <li><p>在本例中，someObject叫做<code>“接收者”(receiver)</code>，messageName叫做<code>“选择子”(selector)</code>。选择子与函数合起来成为<code>“消息”(message)</code>。编译器看到此消息后，将其转换为一条标准的C语言函数调用，所调用的函数是消息传递机制中的核心函数，叫做<code>objc_msgSend</code>，其“原型”如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">void objc_msgSend(id self, SEL cmd, …)</div><div class="line">// 第一个参数的代表接收者，第二个参数代码选择子（SEL是选择子的类型），后续参数是消息中那些参数，其顺序不变。</div><div class="line">// 选择子指的就是方法的名字。“选择子”与“方法”这两个词经常交替使用</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void objc_msgSend(id self, SEL cmd, …)</span><br><span class="line">// 第一个参数的代表接收者，第二个参数代码选择子（SEL是选择子的类型），后续参数是消息中那些参数，其顺序不变。</span><br><span class="line">// 选择子指的就是方法的名字。“选择子”与“方法”这两个词经常交替使用</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>编译器会把刚才那个例子中的消息转换为如下函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">id returnValue = objc_msgSend(someObjct, @selector(messageName:), parameter);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id returnValue = objc_msgSend(someObjct, @selector(messageName:), parameter);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>消息的调用过程</strong></p>
 <ul>
@@ -555,9 +555,9 @@ void doTheThing(int type){
 <ul>
 <li><p><strong>动态方法解析</strong></p>
 <p>  对象在收到无法解读的消息后，首先将调用其所属类的下列类方法：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+(BOOL)resolveInstanceMethod:(SEL)sel;</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+(BOOL)resolveInstanceMethod:(SEL)sel;</span><br></pre></td></tr></table></figure>
 <p>  该方法的参数就是那个未知的选择子，其返回值为Boolean类型，表示这个类是否能新增一个实例方法用以处理此选择子。在继续往下执行转发机制前，本类有机会新增一个处理此选择子的方法。假如尚未实现的方法不是实例方法而是类方法，那么运行系统就会调用另外一个方法：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+(BOOL)resolveClassMethod:(SEL)sel;</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+(BOOL)resolveClassMethod:(SEL)sel;</span><br></pre></td></tr></table></figure>
 <p>  使用这种办法的<code>前提是</code>：相关方法的实现代码已经写好，只等着运行的时候动态插在类里面就可以了。此方案常用来实现@dynamic属性。比如，要访问CoreData框架中的NSManagedObject对象的属性时就可以这么做，因为实现这些属性的存取方法在编译期就能确定。<br>  下面代码演示了如何用“resolveInstanceMethod: ”来实现@dynamic属性：</p>
 <pre><code>#import &lt;objc/runtime.h&gt;
 
@@ -583,14 +583,14 @@ void autoDictionarySetter(id self, SEL _cmd, id value);
 <ul>
 <li><p><strong>备援接收者</strong></p>
 <p>  当前接收者还有第二次机会能处理未知的选择子，在这一步中，运行期系统会问它：能不能把这条消息转给其他接收者来处理。与该步骤对应的处理方法如下：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(id)forwardingTargetForSelector:(SEL)aSelector</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-(id)forwardingTargetForSelector:(SEL)aSelector</span><br></pre></td></tr></table></figure>
 <p>  方法参数代表未知的选择子，若当前接收者能<code>找到备援对象，则将其返回，若找不到，就返回nil</code>。通过此方案，我可以用“组合”(composition)来模拟出“多重继承”(multiple inheritance)的某些特性。在一个对象内部，可能还有一系列其他对象，该对象可经由此方法将能够处理某选择子的相关内部对象返回，这样的话，在外界看来，好像是该对象亲自处理了这条消息似的。<br>  <strong>注意：</strong>我们无法操作经由这一步所转发的消息。若是想在发送给备援接收者之前先修改消息内容，那就得通过完整的消息转发机制来做了。</p>
 </li>
 </ul>
 <ul>
 <li><p><strong>完整的消息转发</strong></p>
 <p>  如果转发算法已经来到这一步的话，那么唯一能做的就是启用完整的消息转发机制了。首先<code>创建NSInvocation对象</code>，<code>把与尚未处理的那条消息有关的全部细节都封装于其中</code>。此对象包含选择子、目标(target)及参数。在触发NSInvocation对象时，“消息派发系统”(message-dispatch system)将亲自出马，把消息指派给目标对象。<br>  此步骤会调用一列方法来转发消息：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(void)forwardInvocation:(NSInvocation *)anInvocation</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-(void)forwardInvocation:(NSInvocation *)anInvocation</span><br></pre></td></tr></table></figure>
 <p>  这个方法可以实现得很简单：只需改变调用目标，使消息在新目标上得以调用即可。然而这样实现出来的方法与“备援接收者”方案所实现的方法等效，所以很少有人采用这么简单的实现方式。比较有用的实现方式为：在触发消息前，先以某种方式改变消息内容，比如追加另外一个参数，或者改换选择子，等等。</p>
 <p>  实现此方法时，若发现某调用操作不应由本类处理，则需调用超类的同名方法。这样的话，继承体系中的每个类都有机会处理此调用请求，直至NSObject。如果最后调用了NSObject类的方法，那么该方法还会继而调用<code>“doseNotRecognizeSelector:”</code>以抛出异常，此异常表明选择子最终未能得到处理。</p>
 </li>
@@ -648,7 +648,7 @@ void autoDictionarySetter(id self, SEL _cmd, id value);
 }
 </code></pre><ul>
 <li>当开发者首次在EOCAutoDictionary实例上访问某个属性时，运行期系统还找不到对应的选择子，因为所需的选择子既没有直接实现，也没有合成出来。现在假设要写入opaqueObject属性，那么系统就会以“setOpaqueObject:”为选择子调用上面这个方法。同理，在读取该属性时，系统也会调用上述方法，只不过传入的选择子是opaqueObject。</li>
-<li>resolveInstanceMethod方法会判断选择子的前缀是否为set，以此分辨其是set选择子还是get选择子。在这两种情况下，都要向类中新增一个处理该选择子所用的方法，这两个方法分别以autoDictionarySetter及autoDictionaryGetter函数指针的形式出现。此时就用到了class_addMethod方法，它可以向类中动态地添加方法，用以处理给定的选择子。第三个参数为函数指针，指向待添加的方法。而最后一个参数则表示待添加方法的“类型编码”(type encoding)。在本例中，编码开头的字符表示方法的返回值类型，后续字符则表示其所接受的各个参数。（参见<a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html" target="_blank" rel="external">Objective-C type Encodings</a>）</li>
+<li>resolveInstanceMethod方法会判断选择子的前缀是否为set，以此分辨其是set选择子还是get选择子。在这两种情况下，都要向类中新增一个处理该选择子所用的方法，这两个方法分别以autoDictionarySetter及autoDictionaryGetter函数指针的形式出现。此时就用到了class_addMethod方法，它可以向类中动态地添加方法，用以处理给定的选择子。第三个参数为函数指针，指向待添加的方法。而最后一个参数则表示待添加方法的“类型编码”(type encoding)。在本例中，编码开头的字符表示方法的返回值类型，后续字符则表示其所接受的各个参数。（参见<a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html" target="_blank" rel="noopener">Objective-C type Encodings</a>）</li>
 </ul>
 </li>
 </ul>
@@ -694,7 +694,7 @@ void autoDictionarySetter(id self, SEL _cmd, id value);
         [backingStore removeObjectForKey:key];
     }
 }
-</code></pre><p>EOCAutoDictionary的用法很简单：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">EOCAutoDictionary *dict = [EOCAutoDictionary new];</div><div class="line">dict.date = [NSDate dateWithTimeIntervalSince1970:4753728000];</div></pre></td></tr></table></figure></p>
+</code></pre><p>EOCAutoDictionary的用法很简单：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">EOCAutoDictionary *dict = [EOCAutoDictionary new];</span><br><span class="line">dict.date = [NSDate dateWithTimeIntervalSince1970:4753728000];</span><br></pre></td></tr></table></figure></p>
 <p>其他属性的访问方式与date类似，要想添加新属性，只需要@property来定义，并将其声明为@dynamic即可。在iOS的CoreAnimation框架中，CALayer类就用了本例相似的实现方式，这使得CALayer成为“兼容于键值编码的”(key-value-coding-compliant)容器类，这就等于说，能够向里面随意添加属性，然后以键值对的形式来访问。于是，开发者就可以向其中新增自定义的属性了，这些属性值的存储工作由基类直接负责，我们只需在CALayer的子类中定义新属性即可。</p>
 <ul>
 <li><strong>要点：</strong><ul>
@@ -724,21 +724,21 @@ void autoDictionarySetter(id self, SEL _cmd, id value);
 <li><p>在新的映射表中，多了一个名为newSelector的选择子，capitalizedString的实现也变了，而lowercaseString与uppercaseString的实现则互换了。上述修改均无须编写子类，只要<code>修改了“方法表”的布局</code>，就会反映到程序中所有的NSString实例之上。</p>
 </li>
 <li><p>交换方法实现，可用下列函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 此函数的两个参数表示待交换的两个方法实现</div><div class="line">void method_exchangeImplementations(Method m1, Method m2)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 此函数的两个参数表示待交换的两个方法实现</span><br><span class="line">void method_exchangeImplementations(Method m1, Method m2)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>方法实现则可通过下列函数获得：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 此函数根据给定的选择从类中取出与之相关的方法。</div><div class="line">Method class_getInstanceMethod(Class aClass, SEL aSelector)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 此函数根据给定的选择从类中取出与之相关的方法。</span><br><span class="line">Method class_getInstanceMethod(Class aClass, SEL aSelector)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>执行下列代码，即可交换前面提到的lowercaseString与uppercaseString方法实现:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Method originalMethod = class_getInstanceMethod([NSString class], @selector(lowercaseString));</div><div class="line">Method swappedMethod = class_getInstanceMethod([NSString class], @selector(uppercaseString));</div><div class="line">method_exchangeImplementations(originalMethod, swappedMethod);</div><div class="line">// 在NSString实例上调用lowercaseString，那么执行的将是uppercaseString的原有实现，反之亦然</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Method originalMethod = class_getInstanceMethod([NSString class], @selector(lowercaseString));</span><br><span class="line">Method swappedMethod = class_getInstanceMethod([NSString class], @selector(uppercaseString));</span><br><span class="line">method_exchangeImplementations(originalMethod, swappedMethod);</span><br><span class="line">// 在NSString实例上调用lowercaseString，那么执行的将是uppercaseString的原有实现，反之亦然</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在实际应用中，直接交换两个方法实现的，意义并不大。因为lowercaseString与uppercaseString这两个方法已经各自实现的很好了，没必要再交换了。可以通过这一手段来<code>为既有的方法实现增添新功能</code>。比方说，想要在调用lowercaseString时记录某些信息，这时就可以通过交换方法实现来达成此目标:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@interface NSString (EOCMyAdditions)</div><div class="line">-(NSString *)eoc_myLowercaseString;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@interface NSString (EOCMyAdditions)</span><br><span class="line">-(NSString *)eoc_myLowercaseString;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>新方法的实现代码可以这样写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">-(NSString *)eoc_myLowercaseString &#123;</div><div class="line">    NSString *lowercase = [self eoc_myLowercaseString];</div><div class="line">    NSLog(@&quot;%@ =&gt; %@&quot;,self,lowercase);</div><div class="line">    return lowercase;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这段代码看上去好像会陷入递归调用的死循环，不过大家要记住，此方法是准备和lowercaseString方法互换的。所以，在运行期，eoc_myLowercaseString选择子实际上对应于原有的lowercaseString方法实现。最后通过下列代码来交换这两个方法实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Method originalMethod = class_getInstanceMethod([NSString class], @selector(lowercaseString));</div><div class="line">Method swappedMethod = class_getInstanceMethod([NSString class], @selector(eoc_myLowercaseString));</div><div class="line">method_exchangeImplementations(originalMethod, swappedMethod);</div></pre></td></tr></table></figure></p>
-<p>执行完上述代码之后，只要在NSString实例上调用lowercaseString方法，就会输出一行记录消息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">NSString *string = @&quot;ThIs iS tHe StRiNg&quot;;</div><div class="line">NSString *lowercaseString = [string lowercaseString];</div><div class="line">NSLog(@&quot;lowercaseString = %@&quot;,lowercaseString);</div><div class="line">//ThIs iS tHe StRiNg  =&gt; this is the string</div></pre></td></tr></table></figure></p>
+<p>新方法的实现代码可以这样写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-(NSString *)eoc_myLowercaseString &#123;</span><br><span class="line">    NSString *lowercase = [self eoc_myLowercaseString];</span><br><span class="line">    NSLog(@&quot;%@ =&gt; %@&quot;,self,lowercase);</span><br><span class="line">    return lowercase;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这段代码看上去好像会陷入递归调用的死循环，不过大家要记住，此方法是准备和lowercaseString方法互换的。所以，在运行期，eoc_myLowercaseString选择子实际上对应于原有的lowercaseString方法实现。最后通过下列代码来交换这两个方法实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Method originalMethod = class_getInstanceMethod([NSString class], @selector(lowercaseString));</span><br><span class="line">Method swappedMethod = class_getInstanceMethod([NSString class], @selector(eoc_myLowercaseString));</span><br><span class="line">method_exchangeImplementations(originalMethod, swappedMethod);</span><br></pre></td></tr></table></figure></p>
+<p>执行完上述代码之后，只要在NSString实例上调用lowercaseString方法，就会输出一行记录消息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NSString *string = @&quot;ThIs iS tHe StRiNg&quot;;</span><br><span class="line">NSString *lowercaseString = [string lowercaseString];</span><br><span class="line">NSLog(@&quot;lowercaseString = %@&quot;,lowercaseString);</span><br><span class="line">//ThIs iS tHe StRiNg  =&gt; this is the string</span><br></pre></td></tr></table></figure></p>
 <p>通过此方案，开发者可以<code>为那些“完全不知道其具体实现的”(completely opaque，“完全不透明的”)黑盒方法增加日志记录功能</code>，这非常有助于程序调试。然而，此做法只在调试程序时有用。很少人在调试程序之外的场合用上述“方法调配技术”来永久改动某个类的功能。不能仅仅因为Objective-C语言有这个特性就一定要用它。<code>若是滥用，反而会令代码变得不易读懂且难于维护</code>。</p>
 <ul>
 <li><strong>要点：</strong><ul>
@@ -756,19 +756,19 @@ void autoDictionarySetter(id self, SEL _cmd, id value);
 <li><p><code>“在运行期检视对象类型”</code>这一操作也叫做<code>“类型信息查询”</code>(introspection，“内省”)，这个强大而有用的特性内置于Foudation框架的NSObject协议里，<code>凡是由公共根类（common root class，即NSObject与NSProxy）继承而来的对象都要遵从此协议</code>。在程序中不要直接比较对象所属的类，明智的做法是调用“类型信息查询方法”。</p>
 </li>
 <li><p>每个Objective-C对象实例都是指向某块内存数据的指针。所以在声明变量时，类型后面要跟一个“*”字符：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NSString *pointerVariable = @“Some string”;</div><div class="line">// pointerVariable可以理解成存放内存地址的变量，而NSString本身的数据就存放于那个地址中</div><div class="line">// 所有Objective-C对象都是如此，若是想把对象所需的内存分配在栈上，编译器则会报错</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NSString *pointerVariable = @“Some string”;</span><br><span class="line">// pointerVariable可以理解成存放内存地址的变量，而NSString本身的数据就存放于那个地址中</span><br><span class="line">// 所有Objective-C对象都是如此，若是想把对象所需的内存分配在栈上，编译器则会报错</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>对于通用的对象类型id，由于其本身已经是指针了，所以我们能够这样写：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">id genericTypedString = @“Some string”;</div><div class="line">// 这种定义方式与用NSString*来定义相比，其语法意义相同</div><div class="line">// 唯一区别在于如果声明时指定了具体类型，那么在该类实例上调用其所没有的方法时，编译器会探知此情况，并发出警告信息。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">id genericTypedString = @“Some string”;</span><br><span class="line">// 这种定义方式与用NSString*来定义相比，其语法意义相同</span><br><span class="line">// 唯一区别在于如果声明时指定了具体类型，那么在该类实例上调用其所没有的方法时，编译器会探知此情况，并发出警告信息。</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>描述Objective-C对象所用的数据结构定义在运行期程序库的头文件里，id类型本身也定义在这里：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">typedef struct objc_object&#123;</div><div class="line">Class isa;</div><div class="line">&#125; *id;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">typedef struct objc_object&#123;</span><br><span class="line">Class isa;</span><br><span class="line">&#125; *id;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>由此可见，<code>每个对象结构体的首个成员是Class类型的变量</code>。该变量定义了对象所属的类，通常称为<code>“is a”指针</code>。例如，刚才例子中所用的对象“是一个”(is a)NSString，所以其“is a”指针就指向NSString。</p>
 <ul>
 <li><p>Class对象也定义在运行期程序库的头文件中：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">typedef struct objc_class *Class;</div><div class="line">struct objc_class &#123;</div><div class="line">    Class isa  OBJC_ISA_AVAILABILITY;</div><div class="line">    Class super_class;</div><div class="line">    const char *name;</div><div class="line">    long version;</div><div class="line">    long info;</div><div class="line">    long instance_size;</div><div class="line">    struct objc_ivar_list *ivars;</div><div class="line">    struct objc_method_list **methodLists;</div><div class="line">    struct objc_cache *cache;</div><div class="line">    struct objc_protocol_list *protocols;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">typedef struct objc_class *Class;</span><br><span class="line">struct objc_class &#123;</span><br><span class="line">    Class isa  OBJC_ISA_AVAILABILITY;</span><br><span class="line">    Class super_class;</span><br><span class="line">    const char *name;</span><br><span class="line">    long version;</span><br><span class="line">    long info;</span><br><span class="line">    long instance_size;</span><br><span class="line">    struct objc_ivar_list *ivars;</span><br><span class="line">    struct objc_method_list **methodLists;</span><br><span class="line">    struct objc_cache *cache;</span><br><span class="line">    struct objc_protocol_list *protocols;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>此结构体存放类的<code>“元数据”</code>（metadata），例如类的实例实现了几个方法，具备多个实例变量等信息。此结构体的首个变量也是isa指针，这说明Class本身亦为Objective-C对象。结构体里还有个变量叫做super_class，它定义了本类的<code>超类</code>。类对象所属的类型（也就是isa指针所指向的类型）是另外一个类，叫做<code>“元类”</code>（metaclass），用来表述类对象本身所具备的元数据。“类方法”就定义于此处，因为这些方法可以理解成类对象的实例方法。每个类仅有一个“类对象”，而每个“类对象”仅有一个与之相关的“元类”。</p>
 </li>
@@ -782,17 +782,17 @@ void autoDictionarySetter(id self, SEL _cmd, id value);
 <li><p><strong>在类继承体系中查询类型信息</strong></p>
 <ul>
 <li><p>可以用类型信息查询方法来检视类继承体系。<code>“isMemberOfClass:”</code>能够判断出对象是否为某个特定类的实例，而<code>“isKindOfClass:”</code>则能够判断出对象是否为某类或其派生类的实例。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">NSMutableDictionary *dict = [NSMutableDictionary new];</div><div class="line">[dict isMemberOfClass:[NSDictionary class]];//NO</div><div class="line">[dict isMemberOfClass:[NSMutableDictionary class]];//YES</div><div class="line">[dict isKindOfClass:[NSDictionary class]];//YES</div><div class="line">[dict isKindOfClass:[NSArray class]];//NO</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NSMutableDictionary *dict = [NSMutableDictionary new];</span><br><span class="line">[dict isMemberOfClass:[NSDictionary class]];//NO</span><br><span class="line">[dict isMemberOfClass:[NSMutableDictionary class]];//YES</span><br><span class="line">[dict isKindOfClass:[NSDictionary class]];//YES</span><br><span class="line">[dict isKindOfClass:[NSArray class]];//NO</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
 </ul>
 <p>像这样的类型信息查询方法使用isa指针获取对象所属的类，然后通过super_class指针在继承体系中游走。由于对象是动态的，所以此特性显得极为重要。</p>
 <ul>
-<li>由于Objective-C使用“动态类型系统”（dynamic typing），所以用于查询对象所属类的类型信息查询功能非常有用。从collection中获取对象时，通常会查询类型信息，这些对象不是“强类型的”（strongly typed）,把它们从collection中取出来时，其类型通常是id。如果想知道具体类型，那就可以使用类型信息查询方法。<br>例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">-(NSString *)commaSeparatedStringFromObjects:(NSArray *)array&#123;</div><div class="line">    NSMutableString *string = [NSMutableString new];</div><div class="line">    for(id object in array)&#123;</div><div class="line">        if([object isKindOfClass:[NSString class]])&#123;</div><div class="line">            [string appendFormat:@&quot;%@,&quot;,object];</div><div class="line">        &#125;else if ([object isKindOfClass:[NSNumber class]])&#123;</div><div class="line">            [string appendFormat:@&quot;%d,&quot;,[object intValue]];</div><div class="line">        &#125;else if ([object isKindOfClass:[NSData class]])&#123;</div><div class="line">            NSString *base64Encoded = /*base 64 encodeed data*/;</div><div class="line">            [string appendFormat:@&quot;%@&quot;,base64Encoded];</div><div class="line">        &#125;else&#123;</div><div class="line">            //Type not supported</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return string;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<li>由于Objective-C使用“动态类型系统”（dynamic typing），所以用于查询对象所属类的类型信息查询功能非常有用。从collection中获取对象时，通常会查询类型信息，这些对象不是“强类型的”（strongly typed）,把它们从collection中取出来时，其类型通常是id。如果想知道具体类型，那就可以使用类型信息查询方法。<br>例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">-(NSString *)commaSeparatedStringFromObjects:(NSArray *)array&#123;</span><br><span class="line">    NSMutableString *string = [NSMutableString new];</span><br><span class="line">    for(id object in array)&#123;</span><br><span class="line">        if([object isKindOfClass:[NSString class]])&#123;</span><br><span class="line">            [string appendFormat:@&quot;%@,&quot;,object];</span><br><span class="line">        &#125;else if ([object isKindOfClass:[NSNumber class]])&#123;</span><br><span class="line">            [string appendFormat:@&quot;%d,&quot;,[object intValue]];</span><br><span class="line">        &#125;else if ([object isKindOfClass:[NSData class]])&#123;</span><br><span class="line">            NSString *base64Encoded = /*base 64 encodeed data*/;</span><br><span class="line">            [string appendFormat:@&quot;%@&quot;,base64Encoded];</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            //Type not supported</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return string;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>也可以用比较类对象是否等同的办法来做。若是若此，那就要使用==操作符，而不要使用比较Objective-C对象时常用的“isEqual:”方法。原因在于，类对象是“单例”（singleton），在应用程序范围内，每个类的Class仅有一个实例。也就是说，另外一种可以精确判断出对象是否为某类实例的办法是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">id object = /*…*/;</div><div class="line">if([object class]==[EOCSomeClass class])&#123;</div><div class="line">//‘object’ is an instance of EOCSomeClass</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>也可以用比较类对象是否等同的办法来做。若是若此，那就要使用==操作符，而不要使用比较Objective-C对象时常用的“isEqual:”方法。原因在于，类对象是“单例”（singleton），在应用程序范围内，每个类的Class仅有一个实例。也就是说，另外一种可以精确判断出对象是否为某类实例的办法是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">id object = /*…*/;</span><br><span class="line">if([object class]==[EOCSomeClass class])&#123;</span><br><span class="line">//‘object’ is an instance of EOCSomeClass</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>即便能这样做，我们也应该尽量使用类型信息查询方法，而不应该直接比较两个类对象是否等同，因为前者可以正确处理那些使用了消息传递机制的对象。比方说，某个对象可能会把其收到的所有选择子都转发给另外一个对象。这样的对象叫做“代理”（proxy）,此种对象均以NSProxy为根类。<br>通常情况下，如果在此种代理对象上调用class方法，那么返回的是代理对象本身（此类是NSProxy的子类），而非接受的代理的对象所属的类。然而，若是改用“isKindOfClass:”这样的类型信息查询方法，那么代理对象就会把这条消息转给“接受代理的对象”（proxied object）。也就是说，这条消息的返回值与直接在接受代理的对象上面查询其类型所得的结果相同。因此，这样查出来的类对象与通过class方法所返回的那个类对象不同，class方法所返回的类表示发起代理的对象，而非接受代理的对象。</p>
 <ul>
 <li><strong>要点</strong><ul>
@@ -832,21 +832,17 @@ void autoDictionarySetter(id self, SEL _cmd, id value);
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">更早的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2017/08/12/记一次面试总结/" title="记一次面试总结">记一次面试总结</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2017/07/29/OC-组件化开发总结/" title="OC-组件化开发总结">OC-组件化开发总结</a></h2>
                 <p class="excerpt">
                 
-                问题
-自我介绍
-为什么会做iOS，比较iOS和安卓
-最擅长什么，对什么感兴趣
-怎么做单元测试，覆盖率达到多少，有没有对业务模块做过单元测试
-一个刚接手的新项目，怎么去检测性能，比如点击一个按钮看它的响应时间
-有这样一个功能，类似微博列表，服务端设计不合理，每条数据是1k，服务端根据客户端传递的页数，
+                
+1 组件化概念介绍1.1 概念将一个单一工程的项目, 分解成为各个独立的组件; 然后按照某种方式, 任意组织成一个拥有完整业务逻辑的工程
+1.2 产生原因如果是单一工程, 业务线比较少, 人数比较少, 一般的开发模式没有任何问题,但是一旦项目发展慢慢庞大, 业务主线增多,开发人员增多, 就会暴露出
                 &hellip;
                 </p>
-                <div class="post-list__meta"><time datetime="2017-08-12T03:15:20.000Z" class="post-list__meta--date date">2017-08-12</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/life/">life</a>
-</span><a class="btn-border-small" href="/2017/08/12/记一次面试总结/">继续阅读</a></div>
+                <div class="post-list__meta"><time datetime="2017-07-29T15:39:30.000Z" class="post-list__meta--date date">2017-07-29</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/knowledge/">knowledge</a>
+</span><a class="btn-border-small" href="/2017/07/29/OC-组件化开发总结/">继续阅读</a></div>
                        
             </div>
         
