@@ -158,7 +158,7 @@
   </header>
 
   <section class="post">
-    <h3 id="内容概要："><a href="#内容概要：" class="headerlink" title="内容概要："></a><strong>内容概要：</strong></h3><p><img src="http://or6lf2z6x.bkt.clouddn.com/%E3%80%8AEffective%20Objective-C%202.0%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%B8%80.png" alt="内容概要image"></p>
+    <h3 id="内容概要："><a href="#内容概要：" class="headerlink" title="内容概要："></a><strong>内容概要：</strong></h3><p><img src="/images/《Effective-Objective-C-2-0》/Snip20181123_7.png" alt="内容概要image"></p>
 <h2 id="————————————"><a href="#————————————" class="headerlink" title="————————————"></a>————————————</h2><h3 id="一、熟悉Objective-C"><a href="#一、熟悉Objective-C" class="headerlink" title="一、熟悉Objective-C"></a>一、熟悉Objective-C</h3><h4 id="1-了解Objective-C的起源"><a href="#1-了解Objective-C的起源" class="headerlink" title="1. 了解Objective-C的起源"></a><strong>1. 了解Objective-C的起源</strong></h4><ul>
 <li>Objective-C为C语言添加了面向对象的特性，是其超集，C语言的所有功能在编写Objective-C代码时依然适用</li>
 <li>Objective-C是由<code>Smalltalk</code>（20世纪70年代出现的一种面向对象的语言，消息型语言的鼻祖）演化而来，其语言使用<code>“消息结构”</code>而不是“函数调用”<ul>
@@ -180,7 +180,7 @@ NSString *anotherString = someString;
 // 说明：只有一个NSString实例，然而有两个变量指向此实例，两个变量都是NSString *型，
 // 这说明当前“栈帧”里分配了两块内存，每块内存的大小都能容下一枚指针（在32位架构的计算机上是4字节，64位计算机上是8字节），
 // 这两块内存里的值都一样，就是 NSString实例的内存地址
-</code></pre><p><img src="http://or6lf2z6x.bkt.clouddn.com/Snip20170830_2.png" alt="参考图"></p>
+</code></pre><p><img src="/images/《Effective-Objective-C-2-0》/Snip20181123_8.png" alt="参考图"></p>
 <ul>
 <li>分配在堆中的内存必须直接管理，而分配在栈上用于保存变量的内存则会在其<code>栈帧弹出时自动清理</code>。</li>
 <li>Objective-C将堆内存管理抽象出来了。不需要用malloc及free来分配或释放对象所占内存。Objective-C运行环境把这部分工作抽象为一套内存管理架构，名叫“引用计数”。</li>
@@ -407,7 +407,7 @@ NSDictionary *dic = @{@&quot;name&quot; : @&quot;funky&quot;,
 <h4 id="10-在既有类中使用关联对象存放自定义数据"><a href="#10-在既有类中使用关联对象存放自定义数据" class="headerlink" title="10. 在既有类中使用关联对象存放自定义数据"></a><strong>10. 在既有类中使用关联对象存放自定义数据</strong></h4><ul>
 <li>“关联对象”（Associated Object）：可以给某对象关联许多其他对象，这些对象通过“键”来区分。存储对象值的时候，可以指明“存储策略”（storage policy），用以维护相应的“内存管理语义”。存储策略由名为objc_AssociationPolicy的枚举所定义，下表列出了该枚举值，同时还列出了与之等效的@property属性：假如关联对象成为了属性，那么它就会具备对应的语义。</li>
 </ul>
-<p><img src="http://or6lf2z6x.bkt.clouddn.com/%E5%85%B3%E8%81%94%E5%AF%B9%E8%B1%A1.png" alt="关联对象"></p>
+<p><img src="/images/《Effective-Objective-C-2-0》/Snip20181123_9.png" alt="关联对象"></p>
 <ul>
 <li><p>下列方法可以管理关联对象：</p>
 <pre><code>// 此方法以给定的键和策略为某对象设置关联对象值。
@@ -598,7 +598,7 @@ void autoDictionarySetter(id self, SEL _cmd, id value);
 <ul>
 <li><p>消息转发全流程</p>
 <p>  下面这张流程图描述了消息转发转发机制处理消息的各个步骤：</p>
-<p>  <img src="http://or6lf2z6x.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-09-24%2009.00.05.png" alt="消息转发"></p>
+<p>  <img src="/images/《Effective-Objective-C-2-0》/Snip20181123_10.png" alt="消息转发"></p>
 </li>
 </ul>
 <p>接收者在每一步中均有机会处理消息。步骤越往后，处理消息的代价就越大。<code>最好能在第一步就处理完，这样的话，运行期系统就可以将此方法缓存起来了</code>。如果这个类的实例稍后还收到同名选择子，那么根本无须启动消息转发流程。若想在第三步里把消息转给备援的接收者，那还不如把转发操作提前到第二步。因为第三步只是修改了调用目标，这项改动放在第二步执行会更为简单，不然的话，还得创建并处理完整的NSInvocation。</p>
@@ -714,11 +714,10 @@ void autoDictionarySetter(id self, SEL _cmd, id value);
 </ul>
 <ul>
 <li><p>NSString类可以响应lowercaseString、uppercaseString、capitalizedString等选择子。这张映射表中的每个选择子都映射到了不同的IMP之上：</p>
-<p>  <img src="http://or6lf2z6x.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-09-29%2009.18.43.png" alt=""></p>
+<p>  <img src="/images/《Effective-Objective-C-2-0》/d300044f-c943-4405-8bb0-69e0dba3d675.png" alt=""></p>
 </li>
-</ul>
-<ul>
-<li>Objective-C运行期系统提供的几个方法都能够用来操作这张表。开发者可以向其中新增选择子，也可以改变某选择子所对应的方法实现，还可以交换两个选择子所映射到的指针。经过几次操作之后，类的方法表就会变成：<br>  <img src="http://or6lf2z6x.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-09-29%2009.36.23.png" alt=""></li>
+<li><p>Objective-C运行期系统提供的几个方法都能够用来操作这张表。开发者可以向其中新增选择子，也可以改变某选择子所对应的方法实现，还可以交换两个选择子所映射到的指针。经过几次操作之后，类的方法表就会变成：<br>  <img src="/images/《Effective-Objective-C-2-0》/129db4ea-2cd1-4967-a645-24d67d26683a.png" alt=""></p>
+</li>
 </ul>
 <ul>
 <li><p>在新的映射表中，多了一个名为newSelector的选择子，capitalizedString的实现也变了，而lowercaseString与uppercaseString的实现则互换了。上述修改均无须编写子类，只要<code>修改了“方法表”的布局</code>，就会反映到程序中所有的NSString实例之上。</p>
@@ -772,7 +771,7 @@ void autoDictionarySetter(id self, SEL _cmd, id value);
 </li>
 <li><p>此结构体存放类的<code>“元数据”</code>（metadata），例如类的实例实现了几个方法，具备多个实例变量等信息。此结构体的首个变量也是isa指针，这说明Class本身亦为Objective-C对象。结构体里还有个变量叫做super_class，它定义了本类的<code>超类</code>。类对象所属的类型（也就是isa指针所指向的类型）是另外一个类，叫做<code>“元类”</code>（metaclass），用来表述类对象本身所具备的元数据。“类方法”就定义于此处，因为这些方法可以理解成类对象的实例方法。每个类仅有一个“类对象”，而每个“类对象”仅有一个与之相关的“元类”。</p>
 </li>
-<li><p>假设有个名为SomeClass的子类从NSObject中继承而来，则其继承体系如图：<br>  <img src="http://or6lf2z6x.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-09-29%2020.00.26.png" alt=""></p>
+<li><p>假设有个名为SomeClass的子类从NSObject中继承而来，则其继承体系如图：<br>  <img src="/images/《Effective-Objective-C-2-0》/e3e21964-725a-4fdd-ade3-fee04eb692ec.png" alt=""></p>
 </li>
 </ul>
 <ul>
