@@ -159,7 +159,7 @@
 
   <section class="post">
     <p>[TOC]</p>
-<h2 id="1-整体概念"><a href="#1-整体概念" class="headerlink" title="1. 整体概念"></a>1. 整体概念</h2><p><img src="http://or6lf2z6x.bkt.clouddn.com/Snip20170727_6.png" alt="整体概念"></p>
+<h2 id="1-整体概念"><a href="#1-整体概念" class="headerlink" title="1. 整体概念"></a>1. 整体概念</h2><p><img src="/images/OC-导航控制器相关/5a6e49ba-2029-4ab6-b667-847378cc061a.png" alt="整体概念"></p>
 <ul>
 <li><strong>解释：</strong><ul>
 <li>UINavigationController是容器类的视图控制器，是UIViewController的子类，它以栈的形式管理一组视图控制器<code>ViewController</code>，位于栈底的视图是导航控制器的根视图<code>rootViewController</code></li>
@@ -508,20 +508,20 @@ typedef NS_ENUM(NSInteger, UIBarButtonSystemItem) {
     self.view.backgroundColor = [UIColor greenColor];
 }
 </code></pre><p>样式如下图所示：</p>
-<p><img src="http://or6lf2z6x.bkt.clouddn.com/Snip20170726_2.png" alt="默认样式"></p>
+<p><img src="/images/OC-导航控制器相关/e5257bbe-96f3-4510-a478-a12475f9dcd7.png" alt="默认样式"></p>
 <h3 id="3-2-状态栏前景和背景色的设置"><a href="#3-2-状态栏前景和背景色的设置" class="headerlink" title="3.2 状态栏前景和背景色的设置"></a>3.2 状态栏前景和背景色的设置</h3><ul>
 <li><strong>3.2.1 设置状态栏的前景部分（信号 &amp; 时间 &amp; 电池…的颜色）</strong></li>
 </ul>
 <p>只能设置两种颜色，默认的是黑色（UIStatusBarStyleDefault）， 白色（UIStatusBarStyleLightContent）</p>
-<p><img src="http://or6lf2z6x.bkt.clouddn.com/Snip20170726_4.png" alt="白色状态栏"></p>
+<p><img src="/images/OC-导航控制器相关/32be63dc-4e76-4a9b-a36f-2f049fd0c7ca.png" alt="白色状态栏"></p>
 <ul>
 <li>设置启动页状态条的前景颜色</li>
 </ul>
-<p><img src="http://or6lf2z6x.bkt.clouddn.com/Snip20170727_9.png" alt="启动页状态条的前景颜色"></p>
+<p><img src="/images/OC-导航控制器相关/e5860a2c-ed3c-4305-bcee-7fb8d5f312e3.png" alt="启动页状态条的前景颜色"></p>
 <ul>
 <li>设置启动后的导航条前景颜色</li>
 </ul>
-<p><strong>方法一：</strong><br>1.在Info.plist中将 View controller-based status bar appearance 设置为 NO<br><img src="http://or6lf2z6x.bkt.clouddn.com/Snip20170726_3.png" alt="设置为 NO"></p>
+<p><strong>方法一：</strong><br>1.在Info.plist中将 View controller-based status bar appearance 设置为 NO<br><img src="/images/OC-导航控制器相关/77c937d6-de3a-46e8-aac5-e8911a2b07cc.png" alt="设置为 NO"></p>
 <p>2.在ViewController.m*中 添加如下代码 </p>
 <pre><code>- (void)viewDidLoad {
     [super viewDidLoad];
@@ -813,7 +813,7 @@ SQLiteTool_OC_Demo是使用OC语言，利用runtime对SQLite进行的封装，�
         基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
     </span>
     <span class="footer__copyright">
-        &copy; 2017 - 本站使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题,
+        &copy; 2018 - 本站使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题,
         由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
     </span>
     
